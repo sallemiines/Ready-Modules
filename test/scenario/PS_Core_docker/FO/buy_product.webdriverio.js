@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
-var globals = require('../../globals.webdriverio.js');
+var common = require('../../../common.webdriverio');
+var globals = require('../../../globals.webdriverio.js');
 
 describe('The Purchase of a product', function () {
     common.initMocha.call(this);

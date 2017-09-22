@@ -1,6 +1,6 @@
 'use strict';
 var should = require('should');
-var common = require('../../common.webdriverio');
+var common = require('../../../common.webdriverio');
 var globals = require('../../globals.webdriverio.js');
 
 describe('Check the order in BO', function () {

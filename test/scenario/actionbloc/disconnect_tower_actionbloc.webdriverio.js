@@ -1,10 +1,9 @@
 'use strict';
 var should = require('should');
-var common = require('../../../common.webdriverio');
-var globals = require('../../../globals.webdriverio.js');
-var numb = 0
+var common = require('../../common.webdriverio');
+var globals = require('../../globals.webdriverio.js');
 
-describe('Ready Shop Creation ', function () {
+describe('Action Bloc: Disconnect from the dashboard', function () {
        
     common.initMocha.call(this);
     console.log("*******************Let's have fun!!!****************");
@@ -18,19 +17,16 @@ describe('Ready Shop Creation ', function () {
     after(common.after);
 
 
-
-    it('Open the selfcare signup page to set email', function (done) {
+    it('Disconnect from the dashboard', function (done) {
         global.fctname = this.test.title;
+//        console.log(this.dessin1);
         this.client
-            .waitForExist(this.selector.dashboard_backoffice_btn, 180000)
-            .waitForExist(this.selector.dashboard_frontoffice_btn, 180000)
-            .click(this.selector.dashboard_frontoffice_btn)
-            .pause(10000)
+            .click(this.selector.dashboard_profilname_link)
+            .pause(500)
+            .click(this.selector.dashboard_disconnect_link)
             .call(done);
     });
 
-
-//}
-        
+    
 
 });

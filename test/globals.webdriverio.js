@@ -209,6 +209,11 @@ module.exports = {
         dashboard_backoffice_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/a[1]',
         dashboard_frontoffice_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/a[2]',
 
+        //3.1 BackOffice page
+        backoffice_startonboarding_btn: 'html/body/div[1]/div/div/div[3]/button[2]',
+        backoffice_lateronboarding_btn: 'html/body/div[1]/div/div/div[3]/button[1]',
+        backoffice_closeonboarding_btn: 'html/body/div[1]/div/div/i',
+
         
 
 

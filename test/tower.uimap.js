@@ -152,8 +152,6 @@ module.exports = {
 
 
 
-
-
         //1.2 signup page
         signup_disconnected_label: '//*[@id="app"]/div[1]/div/div/div/div/div[2]/p',
             //step1: email

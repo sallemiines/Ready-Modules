@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
-var common = require('../../../common.webdriverio');
-var globals = require('../../../globals.webdriverio.js');
+var common = require('../../common.webdriverio');
+var globals = require('../../globals.webdriverio.js');
 var numb = 0
 
 describe('Ready Shop Creation ', function () {
@@ -22,13 +22,10 @@ describe('Ready Shop Creation ', function () {
     it('Open the selfcare signup page to set email', function (done) {
         global.fctname = this.test.title;
         this.client
-            .url('https://' + URL +'-tower.prestashop.net/signin')
-            .waitForExist(this.selector.signin_loginemail_field, 60000)
-            .waitForExist(this.selector.signin_password_field, 60000)
-            .setValue(this.selector.signin_loginemail_field, 'thetester@ps.com')
-            .setValue(this.selector.signin_password_field, 'azerty1234')
-            .click(this.selector.signin_connection_btn)
-            .pause(5000)
+            .waitForExist(this.selector.dashboard_backoffice_btn, 180000)
+            .waitForExist(this.selector.dashboard_frontoffice_btn, 180000)
+            .click(this.selector.dashboard_frontoffice_btn)
+            .pause(10000)
             .call(done);
     });
 

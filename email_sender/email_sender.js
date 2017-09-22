@@ -1,8 +1,8 @@
 'use strict';
 
 var fs = require('fs');
-var optionsBrowser16 = require('../test/itg/1.6/common.webdriverio');
-var optionsBrowser17 = require('../test/itg/1.7/common.webdriverio');
+var optionsBrowser16 = require('../test/common.webdriverio');
+var optionsBrowser17 = require('../test/common.webdriverio');
 
 // create reusable transporter object using the default SMTP transport
 var nodeMailer = require('nodemailer');

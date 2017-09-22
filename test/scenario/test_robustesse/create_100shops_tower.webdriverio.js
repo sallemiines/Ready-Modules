@@ -1,7 +1,7 @@
 'use strict';
 var should = require('should');
-var common = require('../../../common.webdriverio');
-var globals = require('../../../globals.webdriverio.js');
+var common = require('../../common.webdriverio');
+var globals = require('../../globals.webdriverio.js');
 var numb = 0
 
 describe('Ready Shop Creation ', function () {

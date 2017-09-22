@@ -1,0 +1,18 @@
+****Files & Repo****
+
+***Files
+
+common.webdriverio > common functions
+globals.webdriverio > classic UI map (PS core) 
+tower.uimap > new UI map (Tower)
+orderedtests > tests campaign list
+
+Repo***
+
+[datas] > pictures and files to use for tests
+[scenario] > our test suite
+
+[scenario]/[actionbloc] > simple test to include in a suit
+[scenario]/[E2E] > test campaign
+[scenario]/[PS_Core_docker] > tests core prestashop
+[scenario]/[test_robustesse] > tests robustness
