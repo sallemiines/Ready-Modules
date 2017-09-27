@@ -1,5 +1,5 @@
 const { getClient } = require('../common.webdriverio');
-const { selector } = require('../globals.webdriverio.js');
+const { selector } = require('../globals.webdriverio');
 
 describe('Sign Up to Tower', function() {
 
