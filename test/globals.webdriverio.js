@@ -1,8 +1,7 @@
 'use strict';
-var common = require('./common.webdriverio');
-var path = require('path');
-var should = require('should');
-var argv = require('minimist')(process.argv.slice(2));
+const path = require('path');
+const should = require('should');
+const argv = require('minimist')(process.argv.slice(2));
 
 global.date_time = new Date().getTime();
 global.URL = argv.URL;

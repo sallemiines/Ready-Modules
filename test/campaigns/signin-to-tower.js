@@ -1,7 +1,7 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
+const { getClient } = require('../common.webdriverio');
+const { selector } = require('../globals.webdriverio.js');
 
-describe('Connect to Tower', function() {
+describe('Sign In to Tower', function() {
     it('Fill Sign In form', function(done) {
         global.fctname = this.test.title;
         getClient()
@@ -14,4 +14,14 @@ describe('Connect to Tower', function() {
         .pause(5000)
         .call(done);
     });
+
+    it('Disconnect from the dashboard', function(done) {
+        global.fctname = this.test.title;
+        getClient()
+        .click(selector.dashboard_profilname_link)
+        .pause(500)
+        .click(selector.dashboard_disconnect_link)
+        .call(done);
+    });
+
 });
