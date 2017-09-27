@@ -64,8 +64,7 @@ For an execution against QA environment Type
 ### Repo
 
 * [datas] > pictures and files to use for tests
-* [scenario] > our test suite
+* [campaigns] > our test suite
 * [scenario]/[actionbloc] > simple test to include in a suit
-* [scenario]/[E2E] > test campaign
 * [scenario]/[PS_Core_docker] > tests core prestashop
 * [scenario]/[test_robustesse] > tests robustness

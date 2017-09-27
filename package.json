@@ -1,8 +1,6 @@
 {
-  "name": "ps_functional_tests",
+  "name": "Tower Function Tests",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "qa": "mocha test/campaigns --URL=qa"
   },
@@ -10,8 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/PrestaShop/PSFunctionalTests.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "", "license": "ISC",
   "bugs": {
     "url": "https://github.com/PrestaShop/PSFunctionalTests/issues"
   },
