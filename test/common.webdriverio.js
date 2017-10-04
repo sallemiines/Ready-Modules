@@ -1,4 +1,3 @@
-var client;
 const webdriverio = require('webdriverio');
 const globals = require('./globals.webdriverio');
 
@@ -15,7 +14,7 @@ if (typeof global.selenium_url !== 'undefined') {
 }
 
 const options2 = {
-    logLevel: 'silent',
+    logLevel: 'debug',
     waitForTimeout: 30000,
     desiredCapabilities: {
         browserName: 'chrome',
@@ -87,11 +86,9 @@ function initCommands(client) {
     });
 }
 
-const getClient = function() {
-    if (client) {
-        return client;
-    }
-    if (typeof saucelabs !== 'undefined' && saucelabs != "None") {
+const createClient = () => {
+    let client;
+    if (typeof saucelabs !== 'undefined' && saucelabs != 'None') {
         client = webdriverio
         .remote(options2)
         .init()
@@ -109,11 +106,8 @@ const getClient = function() {
 
 module.exports = {
 
-    getClient,
+    createClient,
 
-    take_screenshot: function() {
-        getClient().saveScreenshot(`${__dirname}/screenshots/${getClient().desiredCapabilities.browserName}_exception_${global.date_time}_${global.fctname}.png`);
-    },
     browser: function() {
         return options.desiredCapabilities.browserName
     }

@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 const should = require('should');
 const argv = require('minimist')(process.argv.slice(2));
@@ -174,7 +173,8 @@ module.exports = {
         signin_subscribe_link: '//*[@id="app"]/div[2]/div[2]/div[2]/div[2]/p/a' ,
         signin_subscribe_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/a' ,
         signin_puffins_logo: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/img' ,
-
+        signin_errormsg_wrongemailformat_txt:'//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[3]/span',
+        signin_errormsg_loginincorrect_txt:'//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[1]',
 
         //1.2 signup page
         signup_disconnected_label: '//*[@id="app"]/div[1]/div/div/div/div/div[2]/p',
