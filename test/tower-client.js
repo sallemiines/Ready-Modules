@@ -69,7 +69,7 @@ class TowerClient {
     }
 
     clickOnFrontOfficeButton() {
-        this.client.click(selector.dashboard_frontoffice_btn);
+        return this.client.click(selector.dashboard_frontoffice_btn);
     }
 
     clickOnProfileName() {
@@ -77,8 +77,7 @@ class TowerClient {
     }
 
     close() {
-        this.client.end();
-        return Promise.resolve();
+        return this.client.end();
     };
 
     clickOnDisconnect() {
@@ -98,7 +97,7 @@ class TowerClient {
     }
 
     takeScreenshot() {
-        return this.client.saveScreenshot(`${__dirname}/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}_${global.fctname}.png`);
+        return this.client.saveScreenshot(`${__dirname}/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}.png`);
     }
 
 }

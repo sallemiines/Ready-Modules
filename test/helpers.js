@@ -1,7 +1,15 @@
-const common = require('./common.webdriverio');
+const TowerClient = require('./tower-client');
 
-process.on('uncaughtException', function(err) {
-    console.error(err);
-    // common.take_screenshot();
+const takeScreenshot = err => this.client.takeScreenshot().then(() => {
+    throw err;
 });
-//process.on('ReferenceError', common.take_screenshot);
+
+global.test = (name, instructions) => it(name, () => instructions().catch(takeScreenshot));
+
+global.scenario = (name, tests) =>
+    describe(name, () => {
+        const client = new TowerClient();
+        before(() => this.client = client);
+        tests(client);
+        after(() => client.close());
+    });

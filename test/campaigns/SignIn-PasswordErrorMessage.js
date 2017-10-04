@@ -1,9 +1,6 @@
 const { selector } = require('../globals.webdriverio');
-const TowerClient = require('../tower-client');
 
-describe('SignIn - PasswordErrorMessage', () => {
-    const towerClient = new TowerClient();
-    it('sign in', () => towerClient.fillSignInForm('theteste@rps.com', 'azerty4321'));
-    it('error message is displayed', () => towerClient.waitForText(selector.signin_errormsg_loginincorrect_txt, 60000));
-    it('close browser', () => towerClient.close());
+scenario('SignIn - PasswordErrorMessage', client => {
+    test('sign in', () => client.fillSignInForm('theteste@rps.com', 'azerty4321'));
+    test('error message is displayed', () => client.waitForText(selector.signin_errormsg_loginincorrect_txt, 60000));
 });

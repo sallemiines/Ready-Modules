@@ -1,8 +1,4 @@
-const TowerClient = require('../tower-client');
-
-describe('Dashboard/MyStore - Back Office', () => {
-    const towerClient = new TowerClient();
-    it('sign in', () => towerClient.fillSignInForm());
-    it('click on back office button', () => towerClient.clickOnBackOfficeButton());
-    it('close browser', () => towerClient.close());
+scenario('Dashboard/MyStore - Back Office', client => {
+    test('sign in', () => client.fillSignInForm());
+    test('click on back office button', () => client.clickOnBackOfficeButton());
 });
