@@ -1,5 +1,5 @@
 {
-  "name": "Tower Function Tests",
+  "name": "ready-e2e",
   "version": "1.0.0",
   "scripts": {
     "qa": "mocha test/campaigns --URL=qa"
@@ -14,22 +14,22 @@
   },
   "homepage": "https://github.com/PrestaShop/PSFunctionalTests#readme",
   "dependencies": {
-    "json": "^9.0",
-    "minimist": "^1.2",
+    "json": "9.0",
+    "minimist": "1.2",
     "mocha": "3.5.3",
-    "node-uuid": "^1.4",
+    "node-uuid": "1.4",
     "parsed-url": "0.0.0",
-    "q": "^1.4",
-    "req": "^0.1",
+    "q": "1.4",
+    "req": "0.1",
     "should": "13.1.0",
-    "webdriverio": "^4.0",
+    "webdriverio": "4.0",
     "window": "4.2.0"
   },
   "devDependencies": {
     "dateformat": "3.0.2",
-    "mocha-prepare": "^0.1.0",
-    "mochawesome": "^2.3.0",
-    "nodemailer": "^4.0.1",
-    "npm-check": "^5.4.5"
+    "mocha-prepare": "0.1.0",
+    "mochawesome": "2.3.0",
+    "nodemailer": "4.0.1",
+    "npm-check": "5.4.5"
   }
 }
