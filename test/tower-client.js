@@ -2,7 +2,6 @@ const { createClient } = require('./common.webdriverio');
 const { selector } = require('./globals.webdriverio.js');
 
 class TowerClient {
-
     constructor() {
         this.client = createClient();
     }
@@ -65,11 +64,15 @@ class TowerClient {
         return this.client
         .waitForExist(selector.dashboard_backoffice_btn, 180000)
         .waitForExist(selector.dashboard_frontoffice_btn, 180000)
-        .click(selector.dashboard_backoffice_btn);
+        .click(selector.dashboard_backoffice_btn)
+        .then(() => this.client.getTabIds())
+        .then(ids => this.client.switchTab(ids[1]));
     }
 
     clickOnFrontOfficeButton() {
-        return this.client.click(selector.dashboard_frontoffice_btn);
+        return this.client.click(selector.dashboard_frontoffice_btn)
+        .then(() => this.client.getTabIds())
+        .then(ids => this.client.switchTab(ids[1]));
     }
 
     clickOnProfileName() {
@@ -86,6 +89,28 @@ class TowerClient {
 
     waitForBackOfficeButton() {
         return this.client.waitForExist(selector.dashboard_backoffice_btn, 3 * 60000);
+    }
+
+    waitForBackOffice() {
+        return this.client.waitForText(selector.backoffice_title, 15000)
+        .then(() => this.client.getText(selector.backoffice_title))
+        .then((title) => expect(title).to.be.equal('Tableau de bord'))
+        .then(() => this.client.getUrl())
+        .then(url => expect(url).to.contains('backoffice'));
+    }
+
+    waitForFrontOffice() {
+        return this.client.waitForText(selector.frontoffice_contact_link, 15000)
+        .then(() => this.client.getText(selector.frontoffice_contact_link))
+        .then((title) => expect(title).to.be.equal('Contactez-nous'))
+        .then(() => this.client.getUrl())
+        .then(url => expect(url).endsWith('prestashopready.net/'));
+    }
+
+    waitForSignInPage() {
+        return this.client.waitForValue('h4')
+        .then(() => this.client.getUrl())
+        .then(url => expect(url).to.endsWith('/signin'));
     }
 
     waitForFrontOfficeButton() {

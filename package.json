@@ -8,7 +8,8 @@
     "type": "git",
     "url": "git+https://github.com/PrestaShop/PSFunctionalTests.git"
   },
-  "author": "", "license": "ISC",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/PrestaShop/PSFunctionalTests/issues"
   },
@@ -26,6 +27,7 @@
     "window": "4.2.0"
   },
   "devDependencies": {
+    "chai-string": "^1.4.0",
     "dateformat": "3.0.2",
     "mocha-prepare": "0.1.0",
     "mochawesome": "2.3.0",

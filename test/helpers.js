@@ -1,4 +1,7 @@
 const TowerClient = require('./tower-client');
+const chai = require('chai');
+chai.use(require('chai-string'));
+global.expect = chai.expect;
 
 const takeScreenshot = err => this.client.takeScreenshot().then(() => {
     throw err;

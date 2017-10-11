@@ -106,6 +106,8 @@ module.exports = {
         onboarding_stop: '.onboarding-button-stop',
 
         //FO
+        frontoffice_contact_link: '#contact-link a',
+
         access_loginFO: 'div.user-info > a',
         loginFO: '//*[@id="login-form"]/section/div[1]/div[1]/input',
         passwordFO: '//*[@id="login-form"]/section/div[2]/div[1]/div/input',
@@ -170,29 +172,29 @@ module.exports = {
         signin_forgetpassword_link: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[6]/a',
         signin_rememberme_checkbox: '//*[@id="remember"]',
         signin_connection_btn: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/button',
-        signin_subscribe_link: '//*[@id="app"]/div[2]/div[2]/div[2]/div[2]/p/a' ,
-        signin_subscribe_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/a' ,
-        signin_puffins_logo: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/img' ,
-        signin_errormsg_wrongemailformat_txt:'//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[3]/span',
-        signin_errormsg_loginincorrect_txt:'//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[1]',
+        signin_subscribe_link: '//*[@id="app"]/div[2]/div[2]/div[2]/div[2]/p/a',
+        signin_subscribe_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/a',
+        signin_puffins_logo: '//*[@id="app"]/div[2]/div[2]/div[1]/div[2]/div/img',
+        signin_errormsg_wrongemailformat_txt: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[3]/span',
+        signin_errormsg_loginincorrect_txt: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[1]',
 
         //1.2 signup page
         signup_disconnected_label: '//*[@id="app"]/div[1]/div/div/div/div/div[2]/p',
-            //step1: email
+        //step1: email
         //signup_email_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[2]/input',
         //signup_password_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[4]/input',
         signup_email_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[1]/input',
         signup_password_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[3]/input',
         signup_nextemail_btn: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/button',
-            //step2: name
+        //step2: name
         signup_name_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[2]/input',
         signup_surname_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[4]/input',
         signup_nextname_btn: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/button',
-            //step1: shop
+        //step1: shop
         signup_shopname_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[1]/input',
         signup_subdomain_field: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/div[4]/input',
         signup_nextshop_btn: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/button',
-            //step1: country
+        //step1: country
         signup_country_list: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/select[1]',
         signup_countrynb7_list: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/select[1]/option[7]',
         signup_language_list: '//*[@id="app"]/div[2]/div[2]/div[2]/form/div/select[2]',
@@ -213,14 +215,11 @@ module.exports = {
         backoffice_lateronboarding_btn: 'html/body/div[1]/div/div/div[3]/button[1]',
         backoffice_closeonboarding_btn: 'html/body/div[1]/div/div/i',
 
-        
-
-
-
+        backoffice_title: 'h2.page-title',
 
 
     },
-    shouldExist: function (err, existing) {
+    shouldExist: function(err, existing) {
         should(err).be.not.defined;
         should(existing).be.true;
     }
