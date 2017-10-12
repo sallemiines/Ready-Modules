@@ -209,13 +209,48 @@ module.exports = {
         dashboard_disconnect_link: '//*[@id="app"]/div[1]/div/div[3]/div[3]/a',
         dashboard_backoffice_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/a[1]',
         dashboard_frontoffice_btn: '//*[@id="app"]/div[2]/div[2]/div[1]/div[1]/div[2]/div/div/a[2]',
+        dashboard_selectplan_btn: '/html/body/div[1]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div[2]/a',
 
         //3.1 BackOffice page
         backoffice_startonboarding_btn: 'html/body/div[1]/div/div/div[3]/button[2]',
         backoffice_lateronboarding_btn: 'html/body/div[1]/div/div/div[3]/button[1]',
         backoffice_closeonboarding_btn: 'html/body/div[1]/div/div/i',
 
+<<<<<<< d97276f7a3e068995a78a64e2e79a88846edbf4e
         backoffice_title: 'h2.page-title',
+||||||| merged common ancestors
+        
+
+
+
+=======
+        //4.1 Subscribe panel-heading
+        subscription_monthlyearly_switch: '/html/body/div[1]/div[2]/div[2]/div[2]/div[1]/div/input',
+        subscription_select_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/button',
+        //4.2 Subscribe step2
+        subscription_couponcode_field: '#newCouponCode',
+        subscription_apply_btn: '/html/body/div[1]/div[2]/div[2]/div[1]/div[4]/form/div[2]/button',
+        subscription_mobilephone_field: '/html/body/div[1]/div[2]/div[2]/div[2]/form/div[4]/div[1]/input',
+        subscription_next1_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/div[6]/button',
+        //4.3 Subscribe step3
+        subscription_companyname_field: '#company_name',
+        subscription_adress_field: '#address',
+        subscription_zipcode_field: '#zip_code',
+        subscription_city_field: '#city',
+        subscription_country_list: '#country',
+        subscription_next2_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/div[7]/div/button',
+        //4.4 Subscribe step4
+        subscribe_creditcard_field: '#cardNumber',
+        subscribe_expdate_field: '#cardExpiry',
+        subscribe_secucode_field: '#cardCvc',
+        subscribe_iagree_checkbox: '#gtc',
+        subscribe_subscribenow_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/button',
+
+
+
+
+
+>>>>>>> modification on UI Map; modification on tower-client.js to fill in the subscription part
 
 
     },

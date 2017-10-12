@@ -21,13 +21,13 @@ class TowerClient {
         this.client.url(`https://${URL}-tower.prestashop.net/signout`);
     }
 
-    fillSignUpPage1() {
+    fillSignUpPage1(email=new Date().getTime() + new_customer_email , password = 'azerty1234') {
         return this.client
         .url('https://' + URL + '-tower.prestashop.net/signup')
         .waitForExist(selector.signup_email_field, 60000)
         .waitForExist(selector.signup_password_field, 60000)
-        .setValue(selector.signup_email_field, new Date().getTime() + new_customer_email)
-        .setValue(selector.signup_password_field, 'azerty1234')
+        .setValue(selector.signup_email_field, email)
+        .setValue(selector.signup_password_field, password)
         .click(selector.signup_nextemail_btn);
     }
 
@@ -73,6 +73,35 @@ class TowerClient {
         return this.client.click(selector.dashboard_frontoffice_btn)
         .then(() => this.client.getTabIds())
         .then(ids => this.client.switchTab(ids[1]));
+    }
+
+    clickOnSubscriptionPlan(){
+       return this.client
+       .waitForExist(selector.dashboard_selectplan_btn, 180000)
+       .click(selector.dashboard_selectplan_btn)
+       .waitForExist(selector.subscription_select_btn, 180000)
+       //.click(selector.subscription_monthlyearly_switch)
+       .click(selector.subscription_select_btn)
+       //.waitForExist(selector.subscription_couponcode_field, 180000)
+       //.setValue(selector.subscription_couponcode_field, 'test2')
+       //.click(selector.subscription_apply_btn)
+       .waitForExist(selector.subscription_mobilephone_field)
+       .setValue(selector.subscription_mobilephone_field, '0722334455')
+       .click(selector.subscription_next1_btn)
+       .waitForExist(selector.subscription_companyname_field, 180000)
+       .setValue(selector.subscription_companyname_field, 'shop test corp.')
+       .setValue(selector.subscription_adress_field, '22th juan street')
+       .setValue(selector.subscription_zipcode_field, '42222')
+       .setValue(selector.subscription_city_field, 'San Antonio Vega')
+       .click(selector.subscription_next2_btn)
+       .waitForExist(selector.subscribe_creditcard_field, 180000)
+       //.clearElement(selector.subscribe_creditcard_field)
+       //.setValue(selector.subscribe_creditcard_field, '4242424242424242')
+       .setValue(selector.subscribe_expdate_field, '1148')
+       .setValue(selector.subscribe_secucode_field, '223')
+       .click(selector.subscribe_iagree_checkbox)
+       .click(selector.subscribe_subscribenow_btn)
+       .waitForExist(selector.dashboard_profilname_link, 180000);
     }
 
     clickOnProfileName() {
@@ -128,4 +157,3 @@ class TowerClient {
 }
 
 module.exports = TowerClient;
-
