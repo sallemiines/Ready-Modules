@@ -28,7 +28,6 @@ class WaitBuilder {
     }
 
     assert(assertions) {
-
         return new Promise((resolve, reject) => {
             let executionError = null;
             waitUntil()
@@ -52,6 +51,9 @@ class WaitBuilder {
             })
             .done(isDone => {
                 if (isDone) {
+                    if (!assertions) {
+                        return resolve();
+                    }
                     try {
                         const asserted = assertions(this.result);
                         if (asserted && asserted.then) {
