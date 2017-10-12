@@ -6,7 +6,7 @@ class TowerClient {
         this.client = createClient();
     }
 
-    fillSignInForm(login = 'thetester@ps.com', password = 'azerty1234') {
+    fillSignInForm(login = 'e2euser@ps.com', password = 'azerty1234') {
         return this.client
         .url(`https://${URL}-tower.prestashop.net/signin`)
         .waitForExist(selector.signin_loginemail_field, 60000)
