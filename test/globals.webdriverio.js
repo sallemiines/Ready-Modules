@@ -216,14 +216,8 @@ module.exports = {
         backoffice_lateronboarding_btn: 'html/body/div[1]/div/div/div[3]/button[1]',
         backoffice_closeonboarding_btn: 'html/body/div[1]/div/div/i',
 
-<<<<<<< d97276f7a3e068995a78a64e2e79a88846edbf4e
         backoffice_title: 'h2.page-title',
-||||||| merged common ancestors
-        
 
-
-
-=======
         //4.1 Subscribe panel-heading
         subscription_monthlyearly_switch: '/html/body/div[1]/div[2]/div[2]/div[2]/div[1]/div/input',
         subscription_select_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]/div/button',
@@ -245,14 +239,6 @@ module.exports = {
         subscribe_secucode_field: '#cardCvc',
         subscribe_iagree_checkbox: '#gtc',
         subscribe_subscribenow_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/button',
-
-
-
-
-
->>>>>>> modification on UI Map; modification on tower-client.js to fill in the subscription part
-
-
     },
     shouldExist: function(err, existing) {
         should(err).be.not.defined;
