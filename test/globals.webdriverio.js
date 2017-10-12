@@ -237,11 +237,18 @@ module.exports = {
         subscription_country_list: '#country',
         subscription_next2_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/div[7]/div/button',
         //4.4 Subscribe step4
-        subscribe_creditcard_field: '#cardNumber',
-        subscribe_expdate_field: '#cardExpiry',
-        subscribe_secucode_field: '#cardCvc',
+        subscribe_creditcard_field: '#cardNumber input',
+        subscribe_expdate_field: '#cardExpiry input',
+        subscribe_secucode_field: '#cardCvc input',
         subscribe_iagree_checkbox: '#gtc',
         subscribe_subscribenow_btn: '/html/body/div[1]/div[2]/div[2]/div[2]/form/button',
+
+        //Modal
+        modal_whats_next_btn: `//button[text() = 'What’s next?']`,
+        modal_next_btn: `//button[text() = 'Next']`,
+        modal_go_to_my_account_btn: `//button[text() = 'Go to my account']`,
+
+        upgrade_plan_btn: `//a[text() = 'Upgrade plan']`,
     },
     shouldExist: function(err, existing) {
         should(err).be.not.defined;

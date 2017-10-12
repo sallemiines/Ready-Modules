@@ -7,7 +7,9 @@ const takeScreenshot = err => this.client.takeScreenshot().then(() => {
     throw err;
 });
 
-global.test = (name, instructions) => it(name, () => instructions().catch(takeScreenshot));
+global.test = (name, instructions) => it(name, () => {
+    return instructions().catch(takeScreenshot);
+});
 
 global.scenario = (name, tests) =>
     describe(name, () => {

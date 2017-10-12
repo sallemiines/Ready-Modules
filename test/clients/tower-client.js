@@ -24,7 +24,7 @@ class TowerClient {
         this.client.url(`https://${towerEndpoint}/signout`);
     }
 
-    fillSignUpPage1(email=new Date().getTime() + new_customer_email , password = 'azerty1234') {
+    fillSignUpPage1(email = new Date().getTime() + new_customer_email, password = 'azerty1234') {
         return this.client
         .url(`https://${towerEndpoint}/signup`)
         .waitForExist(selector.signup_email_field, 60000)
@@ -78,33 +78,46 @@ class TowerClient {
         .then(ids => this.client.switchTab(ids[1]));
     }
 
-    clickOnSubscriptionPlan(){
-       return this.client
-       .waitForExist(selector.dashboard_selectplan_btn, 180000)
-       .click(selector.dashboard_selectplan_btn)
-       .waitForExist(selector.subscription_select_btn, 180000)
-       //.click(selector.subscription_monthlyearly_switch)
-       .click(selector.subscription_select_btn)
-       //.waitForExist(selector.subscription_couponcode_field, 180000)
-       //.setValue(selector.subscription_couponcode_field, 'test2')
-       //.click(selector.subscription_apply_btn)
-       .waitForExist(selector.subscription_mobilephone_field)
-       .setValue(selector.subscription_mobilephone_field, '0722334455')
-       .click(selector.subscription_next1_btn)
-       .waitForExist(selector.subscription_companyname_field, 180000)
-       .setValue(selector.subscription_companyname_field, 'shop test corp.')
-       .setValue(selector.subscription_adress_field, '22th juan street')
-       .setValue(selector.subscription_zipcode_field, '42222')
-       .setValue(selector.subscription_city_field, 'San Antonio Vega')
-       .click(selector.subscription_next2_btn)
-       .waitForExist(selector.subscribe_creditcard_field, 180000)
-       //.clearElement(selector.subscribe_creditcard_field)
-       //.setValue(selector.subscribe_creditcard_field, '4242424242424242')
-       .setValue(selector.subscribe_expdate_field, '1148')
-       .setValue(selector.subscribe_secucode_field, '223')
-       .click(selector.subscribe_iagree_checkbox)
-       .click(selector.subscribe_subscribenow_btn)
-       .waitForExist(selector.dashboard_profilname_link, 180000);
+    openOfferPage() {
+        return this.client
+        .waitForExist(selector.dashboard_selectplan_btn, 180000)
+        .click(selector.dashboard_selectplan_btn);
+    }
+
+    selectPlan() {
+        return this.client.waitForExist(selector.subscription_select_btn, 180000)
+        //.click(selector.subscription_monthlyearly_switch)
+        .click(selector.subscription_select_btn)
+    }
+
+    fillSubscribePage1() {
+        return this.client.waitForExist(selector.subscription_mobilephone_field)
+        .setValue(selector.subscription_mobilephone_field, '0722334455')
+        .click(selector.subscription_next1_btn);
+    }
+
+    fillSubscribePage2() {
+        return this.client
+        .waitForExist(selector.subscription_companyname_field, 180000)
+        .setValue(selector.subscription_companyname_field, 'shop test corp.')
+        .setValue(selector.subscription_adress_field, '22th juan street')
+        .setValue(selector.subscription_zipcode_field, '42222')
+        .setValue(selector.subscription_city_field, 'San Antonio Vega')
+        .click(selector.subscription_next2_btn);
+    }
+
+    fillSubscribePage3() {
+        return this.client.waitForExist(selector.subscribe_creditcard_field, 180000)
+        .setValue(selector.subscribe_creditcard_field, '4242424242424242')
+        .setValue(selector.subscribe_expdate_field, '1148')
+        .setValue(selector.subscribe_secucode_field, '223')
+        .click(selector.subscribe_iagree_checkbox)
+        .click(selector.subscribe_subscribenow_btn)
+        .waitForExist(selector.modal_whats_next_btn, 180000);
+    }
+
+    clickOnModalButton(selector) {
+        return this.client.click(selector);
     }
 
     clickOnProfileName() {
@@ -146,19 +159,27 @@ class TowerClient {
     }
 
     waitForFrontOfficeButton() {
-        this.client.waitForExist(selector.dashboard_frontoffice_btn, 3 * 60000);
+        return this.client.waitForExist(selector.dashboard_frontoffice_btn, 3 * 60000);
     }
 
     waitForText(text, timeout = 3000) {
         return this.client.waitForText(text, timeout);
     }
 
+    getText(selector) {
+        return this.waitForText(selector, 10000).then(() => this.client.getText(selector));
+    }
+
     takeScreenshot() {
-        return this.client.saveScreenshot(`${__dirname}/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}.png`);
+        return this.client.saveScreenshot(`test/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}.png`);
     }
 
     open() {
         return this.client.init().windowHandleSize({ width: 1280, height: 1024 });
+    }
+
+    waitForExist(selector, timeout = 3000) {
+        return this.client.waitForExist(selector, timeout);
     }
 
 }
