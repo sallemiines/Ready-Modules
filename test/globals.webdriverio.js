@@ -1,15 +1,18 @@
 const path = require('path');
 const should = require('should');
 const argv = require('minimist')(process.argv.slice(2));
+const config = require('config');
+const PresthostClient = require('./clients/presthost-client');
 
 global.date_time = new Date().getTime();
-global.URL = argv.URL;
 global.module_tech_name = argv.MODULE;
 global.saucelabs = argv.SAUCELABS;
 global.selenium_url = argv.SELENIUM;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
+
+global.presthostClient = new PresthostClient(config.get('presthost.api_endpoint_url'), config.get('presthost.api_key'));
 
 module.exports = {
     selector: {

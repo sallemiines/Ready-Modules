@@ -1,7 +1,5 @@
-const PresthostClient = require('../clients/presthost-client');
 const waitFor = require('./wait-builder').waitFor;
-
-const presthostClient = new PresthostClient('https://integration-presthost.prestashop.net', 'shraheothVissyutNepgerrObryegif2.WryedghacThoFrikiltUnboBlidAlOc');
+const config = require('config');
 
 const shopIsReady = res => {
     const data = res.data;
@@ -17,8 +15,8 @@ const shopIsUpdated = res => {
 describe('Shop-Upgrade', () => {
 
     it('should upgrade shop to the latest version', () => {
-        const fromRelease = '1.7.2.1__20170921';
-        const toRelease = '1.7.2.1__20171009';
+        const fromRelease = config.get('shop_upgrade.initial_version');
+        const toRelease = config.get('shop_upgrade.target_version');
         const id = `shopupgrade${new Date().getTime()}`;
         return presthostClient.createShop({ id, preset: 'normal', release: fromRelease })
         .then(() =>

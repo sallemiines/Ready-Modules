@@ -1,5 +1,8 @@
 const { createClient } = require('./common.webdriverio');
 const { selector } = require('./globals.webdriverio.js');
+const config = require('config');
+
+const towerEndpoint = config.get('tower.endpoint');
 
 class TowerClient {
     constructor() {
@@ -8,7 +11,7 @@ class TowerClient {
 
     fillSignInForm(login = 'e2euser@ps.com', password = 'azerty1234') {
         return this.client
-        .url(`https://${URL}-tower.prestashop.net/signin`)
+        .url(`https://${towerEndpoint}/signin`)
         .waitForExist(selector.signin_loginemail_field, 60000)
         .waitForExist(selector.signin_password_field, 60000)
         .setValue(selector.signin_loginemail_field, login)
@@ -18,12 +21,12 @@ class TowerClient {
     }
 
     logout() {
-        this.client.url(`https://${URL}-tower.prestashop.net/signout`);
+        this.client.url(`https://${towerEndpoint}/signout`);
     }
 
     fillSignUpPage1(email=new Date().getTime() + new_customer_email , password = 'azerty1234') {
         return this.client
-        .url('https://' + URL + '-tower.prestashop.net/signup')
+        .url(`https://${towerEndpoint}/signup`)
         .waitForExist(selector.signup_email_field, 60000)
         .waitForExist(selector.signup_password_field, 60000)
         .setValue(selector.signup_email_field, email)
