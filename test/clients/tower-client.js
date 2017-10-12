@@ -1,5 +1,5 @@
-const { createClient } = require('./common.webdriverio');
-const { selector } = require('./globals.webdriverio.js');
+const { createClient } = require('../common.webdriverio');
+const { selector } = require('../globals.webdriverio.js');
 const config = require('config');
 
 const towerEndpoint = config.get('tower.endpoint');
@@ -155,6 +155,10 @@ class TowerClient {
 
     takeScreenshot() {
         return this.client.saveScreenshot(`${__dirname}/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}.png`);
+    }
+
+    open() {
+        return this.client.init().windowHandleSize({ width: 1280, height: 1024 });
     }
 
 }

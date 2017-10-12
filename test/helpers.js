@@ -1,4 +1,4 @@
-const TowerClient = require('./tower-client');
+const TowerClient = require('./clients/tower-client');
 const chai = require('chai');
 chai.use(require('chai-string'));
 global.expect = chai.expect;
@@ -14,5 +14,5 @@ global.scenario = (name, tests) =>
         const client = new TowerClient();
         before(() => this.client = client);
         tests(client);
-        after(() => client.close());
+        after(() => this.client.close());
     });

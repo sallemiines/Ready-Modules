@@ -94,10 +94,7 @@ const createClient = () => {
         .init()
         .windowHandleSize({ width: 1280, height: 1024 });
     } else {
-        client = webdriverio
-        .remote(options)
-        .init()
-        .windowHandleSize({ width: 1280, height: 1024 });
+        client = webdriverio.remote(options)
     }
     initCommands(client);
     return client;
