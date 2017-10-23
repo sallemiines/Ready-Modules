@@ -1,6 +1,6 @@
 const webdriverio = require('webdriverio');
 const globals = require('./globals.webdriverio');
-
+var client;
 const options = {
     logLevel: 'silent',
     waitForTimeout: 30000,
@@ -85,27 +85,56 @@ function initCommands(client) {
         .call(cb);
     });
 }
-
-const createClient = () => {
-    let client;
-    if (typeof saucelabs !== 'undefined' && saucelabs != 'None') {
-        client = webdriverio
-        .remote(options2)
-        .init()
-        .windowHandleSize({ width: 1280, height: 1024 });
-    } else {
-        client = webdriverio.remote(options)
-    }
-    initCommands(client);
-    return client;
-};
-
-
 module.exports = {
+    getClient: function () {
+        if (client) {
+            return client;
+        } else {
+            if (typeof saucelabs !== 'undefined' && saucelabs != "None") {
+                client = webdriverio
+                    .remote(options2)
+                    .init()
+                    .windowHandleSize({width: 1680, height: 1050});
+            } else {
+                client = webdriverio
+                    .remote(options)
+                    //.init()
+                    .windowHandleSize({width: 1680, height: 1050});
+            }
+            initCommands(client);
 
-    createClient,
-
-    browser: function() {
-        return options.desiredCapabilities.browserName
+            return client;
+        }
+    },
+    // after: function (done) {
+    //     done();
+    // },
+    initMocha: function () {
+        this.timeout(900000000);
+        this.slow(45000);
     }
 };
+
+// const createClient = () => {
+//     let client;
+//     if (typeof saucelabs !== 'undefined' && saucelabs != 'None') {
+//         client = webdriverio
+//         .remote(options2)
+//         .init()
+//         .windowHandleSize({ width: 1280, height: 1024 });
+//     } else {
+//         client = webdriverio.remote(options)
+//     }
+//     initCommands(client);
+//     return client;
+// };
+//
+//
+// module.exports = {
+//
+//     createClient,
+//
+//     browser: function() {
+//         return options.desiredCapabilities.browserName
+//     }
+// };
