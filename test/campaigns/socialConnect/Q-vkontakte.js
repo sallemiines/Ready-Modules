@@ -34,4 +34,22 @@ scenario(`SocialConnect/${social_connect[15].toUpperCase()}`, client => {
         test('click on search button', () => client.clickOnSearchButton());
         test(`should check ${social_connect[15]} customer`, () => client.checkCutomer(social_connect[15]));
     }, "social-connect/vkontakte-client");
+
+    scenario(`SocialConnect/Buy product with - ${social_connect[15].toUpperCase()} - account in FrontOffice`, client => {
+        test('open browser', () => client.open());
+        test('access to front office', () => client.accessToFrontOffice());
+        test('go to product details', () => client.goToProductDetails());
+        test('click on add to cart button', () => client.clickOnAddToCartButton());
+        test('should validate name of product', () => client.validateNameProduct());
+        test('should validate price of product', () => client.validatePriceProduct());
+        test('click on checkout button', () => client.clickOnCheckoutButton());
+        test('click on connect button', () => client.clickOnConnectButton());
+        test(`click on ${social_connect[15]} button`, () => client.clickOnConnectAccountButton(16));
+        test(`should connecting with ${social_connect[15]} account`, () => client.connectingVkontakteAccount());
+        test('should select the address step-2', () => client.fillAddressForm());
+        test('should select the delivery step-3', () => client.selectDelevryStep3());
+        test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
+        test('should confirm the order', () => client.confirmationOrder());
+        test('should get the order id', () => client.getOrderId());
+    }, "social-connect/vkontakte-client");
 }, "social-connect/vkontakte-client");

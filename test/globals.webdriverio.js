@@ -404,19 +404,11 @@ module.exports = {
                     user_connected_span: '//*[@id="_desktop_user_info"]/div/a[2]/span'
                 },
                 Facebook: {
-                    first_facebook_logo: '#follow-teaser > div > a.facebook.custom-social-button-all.custom-social-button-1 > i',
-                    second_facebook_logo: '#_desktop_user_info > div > span > a.facebook.custom-social-button-all.custom-social-button-4 > i',
-                    third_facebook_logo: '#follow-teaser-footer > div > a.facebook.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="email"]',
                     password_input: '//*[@id="pass"]',
                     login_button: '//*[@id="loginbutton"]'
                 },
                 Twitter: {
-                    first_twitter_logo: '#follow-teaser > div > a.twitter.custom-social-button-all.custom-social-button-1 > i',
-                    second_twitter_logo: '#_desktop_user_info > div > span > a.twitter.custom-social-button-all.custom-social-button-4 > i',
-                    third_twitter_logo: '#follow-teaser-footer > div > a.twitter.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="username_or_email"]',
                     password_input: '//*[@id="password"]',
                     allow_button: '//*[@id="allow"]',
@@ -426,19 +418,11 @@ module.exports = {
                     check_sent_email_p: '//*[@id="fb-con-wrapper"]/p'
                 },
                 Amazon: {
-                    first_amazon_logo: '#follow-teaser > div > a.amazon.custom-social-button-all.custom-social-button-1 > i',
-                    second_amazon_logo: '#_desktop_user_info > div > span > a.amazon.custom-social-button-all.custom-social-button-4 > i',
-                    third_amazon_logo: '#follow-teaser-footer > div > a.amazon.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="ap_email"]',
                     password_input: '//*[@id="ap_password"]',
                     signin_button: '//*[@id="signInSubmit"]/span/button'
                 },
                 Google: {
-                    first_google_logo: '#follow-teaser > div > a.google.custom-social-button-all.custom-social-button-1 > i',
-                    second_google_logo: '#_desktop_user_info > div > span > a.google.custom-social-button-all.custom-social-button-4 > i',
-                    third_google_logo: '#follow-teaser-footer > div > a.google.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="identifierId"]',
                     identifier_next_button: '//*[@id="identifierNext"]',
                     password_input: '//input[@type="password" and @name="password"]',
@@ -446,10 +430,6 @@ module.exports = {
                     user_link: '//*[@id="view_container"]/form/div[2]/div/div/div/ul/li[1]/div/div[1]/img'
                 },
                 Pinterest: {
-                    first_pinterest_logo: '#follow-teaser > div > a.pinterest.custom-social-button-all.custom-social-button-1 > i',
-                    second_pinterest_logo: '#_desktop_user_info > div > span > a.pinterest.custom-social-button-all.custom-social-button-4 > i',
-                    third_pinterest_logo: '#follow-teaser-footer > div > a.pinterest.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//input[@type="email" and @name="id"]',
                     password_input: '//input[@type="password" and @name="password"]',
                     login_button: '.red.SignupButton.active',
@@ -459,96 +439,56 @@ module.exports = {
                     check_sent_email_p: '//*[@id="fb-con-wrapper"]/p'
                 },
                 Yahoo: {
-                    first_yahoo_logo: '#follow-teaser > div > a.yahoo.custom-social-button-all.custom-social-button-1 > i',
-                    second_yahoo_logo: '#_desktop_user_info > div > span > a.yahoo.custom-social-button-all.custom-social-button-4 > i',
-                    third_yahoo_logo: '#follow-teaser-footer > div > a.yahoo.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="login-username"]',
                     password_input: '//*[@id="login-passwd"]',
                     next_button: '//*[@id="login-signin"]'
                 },
                 Paypal: {
-                    first_paypal_logo: '#follow-teaser > div > a.paypal.custom-social-button-all.custom-social-button-1 > i',
-                    second_paypal_logo: '#_desktop_user_info > div > span > a.paypal.custom-social-button-all.custom-social-button-4 > i',
-                    third_paypal_logo: '#follow-teaser-footer > div > a.paypal.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="email"]',
                     password_input: '//*[@id="password"]',
                     login_button: '//*[@id="btnLogin"]',
                     allow_button: '//*[@id="agreeConsent"]'
                 },
                 Linkedin: {
-                    first_linkedin_logo: '#follow-teaser > div > a.linkedin.custom-social-button-all.custom-social-button-1 > i',
-                    second_linkedin_logo: '#_desktop_user_info > div > span > a.linkedin.custom-social-button-all.custom-social-button-4 > i',
-                    third_linkedin_logo: '#follow-teaser-footer > div > a.linkedin.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="session_key-oauthAuthorizeForm"]',
                     password_input: '//*[@id="session_password-oauthAuthorizeForm"]',
                     allow_button: '.allow.btn-primary'
                 },
                 Microsoft: {
-                    first_microsoft_logo: '#follow-teaser > div > a.microsoft.custom-social-button-all.custom-social-button-1 > i',
-                    second_microsoft_logo: '#_desktop_user_info > div > span > a.microsoft.custom-social-button-all.custom-social-button-4 > i',
-                    third_microsoft_logo: '#follow-teaser-footer > div > a.microsoft.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="i0116"]',
                     password_input: '//*[@id="i0118"]',
                     next_button: '//*[@id="idSIButton9"]',
                     accept_button: '//*[@id="idBtn_Accept"]'
                 },
                 Foursquare: {
-                    first_foursquare_logo: '#follow-teaser > div > a.foursquare.custom-social-button-all.custom-social-button-1 > i',
-                    second_foursquare_logo: '#_desktop_user_info > div > span > a.foursquare.custom-social-button-all.custom-social-button-4 > i',
-                    third_foursquare_logo: '#follow-teaser-footer > div > a.foursquare.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="username"]',
                     password_input: '//*[@id="password"]',
                     allow_button: '//*[@id="loginFormButton"]'
                 },
                 Github: {
-                    first_github_logo: '#follow-teaser > div > a.github.custom-social-button-all.custom-social-button-1 > i',
-                    second_github_logo: '#_desktop_user_info > div > span > a.github.custom-social-button-all.custom-social-button-4 > i',
-                    third_github_logo: '#follow-teaser-footer > div > a.github.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="login_field"]',
                     password_input: '//*[@id="password"]',
                     allow_button: '.btn.btn-primary.btn-block'
                 },
                 Disqus: {
-                    first_disqus_logo: '#follow-teaser > div > a.disqus.custom-social-button-all.custom-social-button-1 > i',
-                    second_disqus_logo: '#_desktop_user_info > div > span > a.disqus.custom-social-button-all.custom-social-button-4 > i',
-                    third_disqus_logo: '#follow-teaser-footer > div > a.disqus.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="username"]',
                     password_input: '//*[@id="password"]',
                     allow_button: '.btn',
                     accept_button: '.btn.main'
                 },
                 Dropbox: {
-                    first_dropbox_logo: '#follow-teaser > div > a.dropbox.custom-social-button-all.custom-social-button-1 > i',
-                    second_dropbox_logo: '#_desktop_user_info > div > span > a.dropbox.custom-social-button-all.custom-social-button-4 > i',
-                    third_dropbox_logo: '#follow-teaser-footer > div > a.dropbox.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="regular-login-forms"]/div/form/div[1]/div[1]/div[2]/input',
                     password_input: '//*[@id="regular-login-forms"]/div/form/div[1]/div[2]/div[2]/input',
                     login_button: '.login-button.signin-button.button-primary',
                     allow_button: '.auth-button.button-primary'
                 },
                 Wordpress: {
-                    first_wordpress_logo: '#follow-teaser > div > a.wordpress.custom-social-button-all.custom-social-button-1 > i',
-                    second_wordpress_logo: '#_desktop_user_info > div > span > a.wordpress.custom-social-button-all.custom-social-button-4 > i',
-                    third_wordpress_logo: '#follow-teaser-footer > div > a.wordpress.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="usernameOrEmail"]',
                     password_input: '//*[@id="password"]',
                     login_button: '.button.form-button.is-primary',
                     allow_button: '//*[@id="approve"]'
                 },
                 Tumblr: {
-                    first_tumblr_logo: '#follow-teaser > div > a.tumblr.custom-social-button-all.custom-social-button-1 > i',
-                    second_tumblr_logo: '#_desktop_user_info > div > span > a.tumblr.custom-social-button-all.custom-social-button-4 > i',
-                    third_tumblr_logo: '#follow-teaser-footer > div > a.tumblr.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="signup_determine_email"]',
                     password_input: '//*[@id="signup_password"]',
                     next_button: '//*[@id="signup_forms_submit"]/span[2]',
@@ -560,10 +500,6 @@ module.exports = {
                     check_sent_email_p: '//*[@id="fb-con-wrapper"]/p'
                 },
                 Vkontakte: {
-                    first_vkontakte_logo: '#follow-teaser > div > a.vkontakte.custom-social-button-all.custom-social-button-1 > i',
-                    second_vkontakte_logo: '#_desktop_user_info > div > span > a.vkontakte.custom-social-button-all.custom-social-button-4 > i',
-                    third_vkontakte_logo: '#follow-teaser-footer > div > a.vkontakte.custom-social-button-all.custom-social-button-1 > i',
-
                     username_input: '//*[@id="login_submit"]/div/div/input[6]',
                     password_input: '//*[@id="login_submit"]/div/div/input[7]',
                     login_button: '//*[@id="install_allow"]'
@@ -638,23 +574,7 @@ module.exports = {
                 footer: '//*[@id="footer"]',
                 payment_option_radio: '//*[@id="payment-option-1"]',
                 first_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[%ID]'
-                // first_facebook_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[1]',
-                // first_twitter_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[2]',
-                // first_amazon_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[3]',
-                // first_google_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[4]',
-                // first_pinterest_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[5]',
-                // first_yahoo_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[6]',
-                // first_paypal_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[7]',
-                // first_linkedin_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[8]',
-                // first_microsoft_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[9]',
-                // first_foursquare_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[10]',
-                // first_github_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[11]',
-                // first_disqus_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[12]',
-                // first_dropbox_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[13]',
-                // first_wordpress_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[14]',
-                // first_tumblr_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[15]',
-                // first_vkontakte_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[16]'
-            },
+            }
 
         }
     },

@@ -25,6 +25,15 @@ scenario(`SocialConnect/${social_connect[10].toUpperCase()}`, client => {
         test('should check the connection', () => client.checkConnections('prestotests prestotests'));
     }, "social-connect/github-client");
 
+    scenario(`SocialConnect/Check customer - ${social_connect[10].toUpperCase()} - in BackOffice`, client => {
+        test('open browser', () => client.open());
+        test('sign in', () => client.fillSignInForm());
+        test('access to customers page', () => client.goToCustomers());
+        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+github@gmail.com"));
+        test('click on search button', () => client.clickOnSearchButton());
+        test(`should check ${social_connect[10]} customer`, () => client.checkCutomer(social_connect[10]));
+    }, "social-connect/github-client");
+
     scenario(`SocialConnect/Buy product with - ${social_connect[10].toUpperCase()} - account in FrontOffice`, client => {
         test('open browser', () => client.open());
         test('access to front office', () => client.accessToFrontOffice());
@@ -41,14 +50,5 @@ scenario(`SocialConnect/${social_connect[10].toUpperCase()}`, client => {
         test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
         test('should confirm the order', () => client.confirmationOrder());
         test('should get the order id', () => client.getOrderId());
-    }, "social-connect/github-client");
-
-    scenario(`SocialConnect/Check customer - ${social_connect[10].toUpperCase()} - in BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to customers page', () => client.goToCustomers());
-        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+github@gmail.com"));
-        test('click on search button', () => client.clickOnSearchButton());
-        test(`should check ${social_connect[10]} customer`, () => client.checkCutomer(social_connect[10]));
     }, "social-connect/github-client");
 }, "social-connect/github-client");

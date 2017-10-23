@@ -16,20 +16,38 @@ scenario(`SocialConnect/${social_connect[12].toUpperCase()}`, client => {
         test('update configuration settings', () => client.fillConfigurationForm());
     }, "social-connect/dropbox-client");
 
-    // scenario(`SocialConnect/Connect with - ${social_connect[12].toUpperCase()} - account in FrontOffice`, client => {
-    //     test('open browser', () => client.open());
-    //     test('access to front office', () => client.accessToFrontOffice());
-    //     test(`click on ${social_connect[12]} button`, () => client.clickOnDropboxButton(social_connect[12]));
-    //     test(`should connecting with ${social_connect[12]} account`, () => client.connectingDropboxAccount());
-    //     test('should check the connection', () => client.checkConnections('Tests Presto'));
-    // }, "social-connect/dropbox-client");
-    //
-    // scenario(`SocialConnect/Check customer - ${social_connect[12].toUpperCase()} - in BackOffice`, client => {
-    //     test('open browser', () => client.open());
-    //     test('sign in', () => client.fillSignInForm());
-    //     test('access to customers page', () => client.goToCustomers());
-    //     test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+dropbox@gmail.com"));
-    //     test('click on search button', () => client.clickOnSearchButton());
-    //     test(`should check ${social_connect[12]} customer`, () => client.checkCutomer(social_connect[12]));
-    // }, "social-connect/dropbox-client");
+    scenario(`SocialConnect/Connect with - ${social_connect[12].toUpperCase()} - account in FrontOffice`, client => {
+        test('open browser', () => client.open());
+        test('access to front office', () => client.accessToFrontOffice());
+        test(`click on ${social_connect[12]} button`, () => client.clickOnDropboxButton(social_connect[12]));
+        test(`should connecting with ${social_connect[12]} account`, () => client.connectingDropboxAccount());
+        test('should check the connection', () => client.checkConnections('Tests Presto'));
+    }, "social-connect/dropbox-client");
+
+    scenario(`SocialConnect/Check customer - ${social_connect[12].toUpperCase()} - in BackOffice`, client => {
+        test('open browser', () => client.open());
+        test('sign in', () => client.fillSignInForm());
+        test('access to customers page', () => client.goToCustomers());
+        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+dropbox@gmail.com"));
+        test('click on search button', () => client.clickOnSearchButton());
+        test(`should check ${social_connect[12]} customer`, () => client.checkCutomer(social_connect[12]));
+    }, "social-connect/dropbox-client");
+
+    scenario(`SocialConnect/Buy product with - ${social_connect[12].toUpperCase()} - account in FrontOffice`, client => {
+        test('open browser', () => client.open());
+        test('access to front office', () => client.accessToFrontOffice());
+        test('go to product details', () => client.goToProductDetails());
+        test('click on add to cart button', () => client.clickOnAddToCartButton());
+        test('should validate name of product', () => client.validateNameProduct());
+        test('should validate price of product', () => client.validatePriceProduct());
+        test('click on checkout button', () => client.clickOnCheckoutButton());
+        test('click on connect button', () => client.clickOnConnectButton());
+        test(`click on ${social_connect[12]} button`, () => client.clickOnConnectAccountButton(13));
+        test(`should connecting with ${social_connect[12]} account`, () => client.connectingDropboxAccount());
+        test('should select the address step-2', () => client.fillAddressForm());
+        test('should select the delivery step-3', () => client.selectDelevryStep3());
+        test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
+        test('should confirm the order', () => client.confirmationOrder());
+        test('should get the order id', () => client.getOrderId());
+    }, "social-connect/dropbox-client");
 }, "social-connect/dropbox-client");
