@@ -5,7 +5,7 @@ scenario('BlockYoutube-BackOffice', client => {
             test('should log in successfully in BO', () => client.signInBO());
         }, 'blockYoutube-client');
         scenario('Go to the module page', client => {
-            test('should go to the installed module page', () => client.goModulePage());
+            test('should go to the installed module page', () => client.goToModulePage());
             test('should search the BlockYoutube module page', () => client.searchModule());
         }, "blockYoutube-client");
         scenario('Configure the  BlockYoutube module', client => {

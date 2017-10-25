@@ -7,7 +7,7 @@ class blockYoutube  {
         this.client = getClient();
     }
 
-    signInBO(login = 'prestest@prestashop.com', password = 'abcd1234') {
+    signInBO(login = 'testpresta@presto.com', password = 'abcd1234') {
         return this.client
             .url(`https://${URL}/backoffice/`)
             .waitForExist(selector.BO.AccessPage.login_input, 60000)
@@ -30,7 +30,7 @@ class blockYoutube  {
         return this.client.init().windowHandleMaximize();
     }
 
-    goModulePage() {
+    goToModulePage() {
         return this.client
             .waitForExist(selector.BO.ModulesPage.modules_subtab, 90000)
             .click(selector.BO.ModulesPage.modules_subtab)
