@@ -412,7 +412,6 @@ module.exports = {
                 page_product_video_button: '//*[@id="youtube_banner_switch"]/label[1]',
                 pop_up_video_button:'//*[@id="embed_type_thumb_label"]' ,
 
-
             },
             ProductSetting: {
 
