@@ -1,54 +1,51 @@
-scenario(`SocialConnect/${social_connect[10].toUpperCase()}`, client => {
-    scenario(`SocialConnect/Configuration - ${social_connect[10].toUpperCase()} - BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to module page', () => client.goToModule());
-        test('search the module', () => client.searchModule(module_tech_name));
-        test('click on configure button', () => client.clickOnConfigureButton());
-        test(`click on ${social_connect[10]} menu tab`, () => client.ClickOnConfigurationAccountMenu(13));
-        test('configuration page is shown', () => client.waitForConfigurePage(social_connect[10]));
-        test(`click on ${social_connect[10]} developers link`, () => client.clickOnDevelopersLink(social_connect[10]));
-        test(`log in with ${social_connect[10]} account`, () => client.fillGithubSignInForm());
-        test('click on cancel button', () => client.clickOnCancelButton());
-        test('access to the application', () => client.accessToApplication());
-        test('edit the home page url', () => client.setHomePageUrl());
-        test('edit the callback url', () => client.setCallbackUrl());
-        test('click on update button', () => client.clickOnUpdateButton());
-        test('update configuration settings', () => client.fillConfigurationForm());
-    }, "social-connect/github-client");
-
-    scenario(`SocialConnect/Connect with - ${social_connect[10].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test(`click on ${social_connect[10]} button`, () => client.clickOnGithubButton(social_connect[10]));
-        test(`should connecting with ${social_connect[10]} account`, () => client.connectingGithubAccount());
+scenario('Test github', client => {
+    scenario('Configure github Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to module page', () => client.goToModule());
+        test('should search the module', () => client.searchModule('fbloginblock'));
+        test('should click on configure button', () => client.clickOnConfigureButton());
+        test('should click on github menu tab', () => client.ClickOnConfigurationAccountMenu(13));
+        test('should configuration page is shown', () => client.waitForConfigurePage('github'));
+        test('should click on github developers link', () => client.clickOnDevelopersLink('github'));
+        test('should log in with github account', () => client.fillGithubSignInForm());
+        test('should click on cancel button', () => client.clickOnCancelButton());
+        test('should access to the application', () => client.accessToApplication());
+        test('should edit the home page url', () => client.setHomePageUrl());
+        test('should edit the callback url', () => client.setCallbackUrl());
+        test('should click on update button', () => client.clickOnUpdateButton());
+        test('should update configuration settings', () => client.fillConfigurationForm());
+    }, "social-connect/github-client", true);
+    scenario('Connect with github account in Front Office', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should click on github button', () => client.clickOnGithubButton('github'));
+        test('should connecting with github account', () => client.connectingGithubAccount());
         test('should check the connection', () => client.checkConnections('prestotests prestotests'));
-    }, "social-connect/github-client");
-
-    scenario(`SocialConnect/Check customer - ${social_connect[10].toUpperCase()} - in BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to customers page', () => client.goToCustomers());
-        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+github@gmail.com"));
-        test('click on search button', () => client.clickOnSearchButton());
-        test(`should check ${social_connect[10]} customer`, () => client.checkCutomer(social_connect[10]));
-    }, "social-connect/github-client");
-
-    scenario(`SocialConnect/Buy product with - ${social_connect[10].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test('go to product details', () => client.goToProductDetails());
-        test('click on add to cart button', () => client.clickOnAddToCartButton());
+    }, "social-connect/github-client", true);
+    scenario('Check github customer in Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to customers page', () => client.goToCustomers());
+        test('should filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+github@gmail.com"));
+        test('should click on search button', () => client.clickOnSearchButton());
+        test('should check github customer', () => client.checkCutomer('github'));
+    }, "social-connect/github-client", true);
+    scenario('Buy product with github account in Front Office', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should go to product details', () => client.goToProductDetails());
+        test('should click on add to cart button', () => client.clickOnAddToCartButton());
         test('should validate name of product', () => client.validateNameProduct());
         test('should validate price of product', () => client.validatePriceProduct());
-        test('click on checkout button', () => client.clickOnCheckoutButton());
-        test('click on connect button', () => client.clickOnConnectButton());
-        test(`click on ${social_connect[10]} button`, () => client.clickOnConnectAccountButton(11));
-        test(`should connecting with ${social_connect[10]} account`, () => client.connectingGithubAccount());
+        test('should click on checkout button', () => client.clickOnCheckoutButton());
+        test('should click on connect button', () => client.clickOnConnectButton());
+        test('should click on github button', () => client.clickOnConnectAccountButton(11));
+        test('should connecting with github account', () => client.connectingGithubAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());
         test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
         test('should confirm the order', () => client.confirmationOrder());
         test('should get the order id', () => client.getOrderId());
-    }, "social-connect/github-client");
-}, "social-connect/github-client");
+    }, "social-connect/github-client", true);
+}, "social-connect/github-client", true);

@@ -1,39 +1,37 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class DropboxClient extends SocialConnect{
+class DropboxClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._redirectUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get redirectUrl(){
+    get redirectUrl() {
         return this._redirectUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set redirectUrl(value){
+    set redirectUrl(value) {
         this._redirectUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -50,7 +48,7 @@ class DropboxClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillDropboxSignInForm(login="prestotests+dropbox@gmail.com", password="presto_tests") {
+    fillDropboxSignInForm(login = "prestotests+dropbox@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Dropbox.username_input, 90000)
             .setValue(external.FO.Dropbox.username_input, login)
@@ -113,7 +111,7 @@ class DropboxClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingDropboxAccount(login='prestotests+dropbox@gmail.com', password='presto_tests') {
+    connectingDropboxAccount(login = 'prestotests+dropbox@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Dropbox.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Dropbox.username_input, login)

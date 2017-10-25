@@ -1,48 +1,46 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class GoogleClient extends SocialConnect{
+class GoogleClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._javaScriptOrigins = "";
         this._authorizedRedirectUri = "";
         this._key = "";
         this._secret = "";
     }
 
-    get javaScriptOrigins(){
+    get javaScriptOrigins() {
         return this._javaScriptOrigins;
     }
 
-    get authorizedRedirectUri(){
+    get authorizedRedirectUri() {
         return this._authorizedRedirectUri;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set javaScriptOrigins(value){
+    set javaScriptOrigins(value) {
         this._javaScriptOrigins = value;
     }
 
-    set authorizedRedirectUri(value){
+    set authorizedRedirectUri(value) {
         this._authorizedRedirectUri = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -65,7 +63,7 @@ class GoogleClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillGoogleSignInForm(login="prestotests@gmail.com", password="presto_tests") {
+    fillGoogleSignInForm(login = "prestotests@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Google.username_input, 90000)
             .setValue(external.FO.Google.username_input, login)
@@ -189,7 +187,7 @@ class GoogleClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingGoogleAccount(login='prestotests@gmail.com', password='presto_tests') {
+    connectingGoogleAccount(login = 'prestotests@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Google.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Google.username_input, login)

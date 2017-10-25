@@ -1,12 +1,12 @@
 // @TODO:fix connecting with amazon in FO
-scenario(`SocialConnect/${social_connect[2].toUpperCase()}`, client => {
-    scenario(`SocialConnect/Configuration - ${social_connect[2].toUpperCase()} - BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('acces to module page', () => client.goToModule());
-        test('search the module', () => client.searchModule(module_tech_name));
-        test('click on configure button', () => client.clickOnConfigureButton());
-        test(`click on ${social_connect[2]} menu tab`, () => client.ClickOnConfigurationAccountMenu(6));
-        test('configuration page is shown', () => client.waitForConfigurePage(social_connect[2]));
-    }, "social-connect/amazon-client");
-}, "social-connect/amazon-client");
+scenario('Test amazon', client => {
+    scenario('Configure amazon in Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should acces to module page', () => client.goToModule());
+        test('should search the module', () => client.searchModule('fbloginblock'));
+        test('should click on configure button', () => client.clickOnConfigureButton());
+        test('should click on amazon menu tab', () => client.ClickOnConfigurationAccountMenu(6));
+        test('should configuration page is shown', () => client.waitForConfigurePage('amazon'));
+    }, "social-connect/amazon-client", true);
+}, "social-connect/amazon-client", true);

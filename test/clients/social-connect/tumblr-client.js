@@ -1,48 +1,46 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class TumblrClient extends SocialConnect{
+class TumblrClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._websiteUrl = "";
         this._callbackUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get websiteUrl(){
+    get websiteUrl() {
         return this._websiteUrl;
     }
 
-    get callbackUrl(){
+    get callbackUrl() {
         return this._callbackUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set websiteUrl(value){
+    set websiteUrl(value) {
         this._websiteUrl = value;
     }
 
-    set callbackUrl(value){
+    set callbackUrl(value) {
         this._callbackUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -63,7 +61,7 @@ class TumblrClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillTumblrSignInForm(login="prestotests+tumblr@gmail.com", password="presto_tests") {
+    fillTumblrSignInForm(login = "prestotests+tumblr@gmail.com", password = "presto_tests") {
         return this.client
             .waitForVisible(external.FO.Tumblr.username_input, 90000)
             .setValue(external.FO.Tumblr.username_input, login)
@@ -149,7 +147,7 @@ class TumblrClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingTumblrAccount(login='prestotests+tumblr@gmail.com', password='presto_tests') {
+    connectingTumblrAccount(login = 'prestotests+tumblr@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Tumblr.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Tumblr.username_input, login)
@@ -184,7 +182,9 @@ class TumblrClient extends SocialConnect{
             .pause(3000)
 
             .then(() => this.client.getText(selector.FO.SocialConnect.Tumblr.check_sent_email_p))
-            .then((value) => {expect(value).to.eql("Password has been sent to your mailbox: "+login)})
+            .then((value) => {
+                expect(value).to.eql("Password has been sent to your mailbox: " + login)
+            })
             .url('https://' + URL)
             .pause(5000);
     }

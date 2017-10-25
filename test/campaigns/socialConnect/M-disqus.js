@@ -1,55 +1,52 @@
-scenario(`SocialConnect/${social_connect[11].toUpperCase()}`, client => {
-    scenario(`SocialConnect/Configuration - ${social_connect[11].toUpperCase()} - BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to module page', () => client.goToModule());
-        test('search the module', () => client.searchModule(module_tech_name));
-        test('click on configure button', () => client.clickOnConfigureButton());
-        test(`click on ${social_connect[11]} menu tab`, () => client.ClickOnConfigurationAccountMenu(14));
-        test('configuration page is shown', () => client.waitForConfigurePage(social_connect[11]));
-        test(`click on ${social_connect[11]} developers link`, () => client.clickOnDevelopersLink(social_connect[11]));
-        test(`log in with ${social_connect[11]} account`, () => client.fillDisqusSignInForm());
-        test('access to the application', () => client.accessToApplication());
-        test('access to the settings subtab', () => client.clickOnSettingsSubTab());
-        test('edit the website url', () => client.setWebsiteUrl());
-        test('edit the callback url', () => client.setCallbackUrl());
-        test('edit the terms of service url', () => client.setTermsOfServiceUrl());
-        test('click on save changes button', () => client.clickOnSaveChangesButton());
-        test('update configuration settings', () => client.fillConfigurationForm());
-    }, "social-connect/disqus-client");
-
-    scenario(`SocialConnect/Connect with - ${social_connect[11].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test(`click on ${social_connect[11]} button`, () => client.clickOnDisqusButton(social_connect[11]));
-        test(`should connecting with ${social_connect[11]} account`, () => client.connectingDisqusAccount());
+scenario('Test disqus', client => {
+    scenario('Configure disqus in Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to module page', () => client.goToModule());
+        test('should search the module', () => client.searchModule('fbloginblock'));
+        test('should click on configure button', () => client.clickOnConfigureButton());
+        test('should click on disqus menu tab', () => client.ClickOnConfigurationAccountMenu(14));
+        test('should configuration page is shown', () => client.waitForConfigurePage('disqus'));
+        test('should click on disqus developers link', () => client.clickOnDevelopersLink('disqus'));
+        test('should log in with disqus account', () => client.fillDisqusSignInForm());
+        test('should access to the application', () => client.accessToApplication());
+        test('should access to the settings subtab', () => client.clickOnSettingsSubTab());
+        test('should edit the website url', () => client.setWebsiteUrl());
+        test('should edit the callback url', () => client.setCallbackUrl());
+        test('should edit the terms of service url', () => client.setTermsOfServiceUrl());
+        test('should click on save changes button', () => client.clickOnSaveChangesButton());
+        test('should update configuration settings', () => client.fillConfigurationForm());
+    }, "social-connect/disqus-client", true);
+    scenario('Connect with disqus account in Front Office', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should click on disqus button', () => client.clickOnDisqusButton('disqus'));
+        test('should connecting with disqus account', () => client.connectingDisqusAccount());
         test('should check the connection', () => client.checkConnections('prestotests prestotests'));
-    }, "social-connect/disqus-client");
-
-    scenario(`SocialConnect/Check customer - ${social_connect[11].toUpperCase()} - in BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to customers page', () => client.goToCustomers());
-        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+disqus@gmail.com"));
-        test('click on search button', () => client.clickOnSearchButton());
-        test(`should check ${social_connect[11]} customer`, () => client.checkCutomer(social_connect[11]));
-    }, "social-connect/disqus-client");
-
-    scenario(`SocialConnect/Buy product with - ${social_connect[11].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test('go to product details', () => client.goToProductDetails());
-        test('click on add to cart button', () => client.clickOnAddToCartButton());
+    }, "social-connect/disqus-client", true);
+    scenario('Check disqus customer in Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to customers page', () => client.goToCustomers());
+        test('should filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+disqus@gmail.com"));
+        test('should click on search button', () => client.clickOnSearchButton());
+        test('should check disqus customer', () => client.checkCutomer('disqus'));
+    }, "social-connect/disqus-client", true);
+    scenario('Buy product with disqus account in FrontOffice', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should go to product details', () => client.goToProductDetails());
+        test('should click on add to cart button', () => client.clickOnAddToCartButton());
         test('should validate name of product', () => client.validateNameProduct());
         test('should validate price of product', () => client.validatePriceProduct());
-        test('click on checkout button', () => client.clickOnCheckoutButton());
-        test('click on connect button', () => client.clickOnConnectButton());
-        test(`click on ${social_connect[11]} button`, () => client.clickOnConnectAccountButton(12));
-        test(`should connecting with ${social_connect[11]} account`, () => client.connectingDisqusAccount());
+        test('should click on checkout button', () => client.clickOnCheckoutButton());
+        test('should click on connect button', () => client.clickOnConnectButton());
+        test('should click on disqus button', () => client.clickOnConnectAccountButton(12));
+        test('should connecting with disqus account', () => client.connectingDisqusAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());
         test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
         test('should confirm the order', () => client.confirmationOrder());
         test('should get the order id', () => client.getOrderId());
-    }, "social-connect/disqus-client");
-}, "social-connect/disqus-client");
+    }, "social-connect/disqus-client", true);
+}, "social-connect/disqus-client", true);

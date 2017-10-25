@@ -1,13 +1,11 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class PaypalClient extends SocialConnect{
+class PaypalClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._returnUrl = "";
         this._privacyPolicyUrl = "";
         this._userAgreementUrl = "";
@@ -15,25 +13,45 @@ class PaypalClient extends SocialConnect{
         this._secret = "";
     }
 
-    get returnUrl(){return this._returnUrl;}
+    get returnUrl() {
+        return this._returnUrl;
+    }
 
-    get privacyPolicyUrl(){return this._privacyPolicyUrl;}
+    get privacyPolicyUrl() {
+        return this._privacyPolicyUrl;
+    }
 
-    get userAgreementUrl(){return this._userAgreementUrl;}
+    get userAgreementUrl() {
+        return this._userAgreementUrl;
+    }
 
-    get key(){return this._key;}
+    get key() {
+        return this._key;
+    }
 
-    get secret(){return this._secret;}
+    get secret() {
+        return this._secret;
+    }
 
-    set returnUrl(value){this._returnUrl = value;}
+    set returnUrl(value) {
+        this._returnUrl = value;
+    }
 
-    set privacyPolicyUrl(value){this._privacyPolicyUrl = value;}
+    set privacyPolicyUrl(value) {
+        this._privacyPolicyUrl = value;
+    }
 
-    set userAgreementUrl(value){this._userAgreementUrl = value;}
+    set userAgreementUrl(value) {
+        this._userAgreementUrl = value;
+    }
 
-    set key(value){this._key = value;}
+    set key(value) {
+        this._key = value;
+    }
 
-    set secret(value){this._secret = value;}
+    set secret(value) {
+        this._secret = value;
+    }
 
     clickOnDevelopersLink(name) {
         return this.client
@@ -63,7 +81,7 @@ class PaypalClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillPaypalSignInForm(login="prestotests+paypal@gmail.com", password="presto_tests") {
+    fillPaypalSignInForm(login = "prestotests+paypal@gmail.com", password = "presto_tests") {
         return this.client
             .waitForVisible(external.FO.Paypal.username_input, 90000)
             .setValue(external.FO.Paypal.username_input, login)
@@ -164,7 +182,7 @@ class PaypalClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingPaypalAccount(login='prestotests+paypal@gmail.com', password='presto_tests') {
+    connectingPaypalAccount(login = 'prestotests+paypal@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.Paypal.username_input, 90000)
             .setValue(selector.FO.Paypal.username_input, login)

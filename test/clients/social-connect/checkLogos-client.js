@@ -1,12 +1,7 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class CheckLogosClient extends SocialConnect{
-    constructor() {
-        super();
-        this.client = getClient();
-    }
+class CheckLogosClient extends SocialConnect {
 
     findFirstLogos(name) {
         return this.client

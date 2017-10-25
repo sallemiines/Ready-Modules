@@ -1,13 +1,11 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class DisqusClient extends SocialConnect{
+class DisqusClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._websiteUrl = "";
         this._callbackUrl = "";
         this._termsOfServiceUrl = "";
@@ -15,25 +13,45 @@ class DisqusClient extends SocialConnect{
         this._secret = "";
     }
 
-    get websiteUrl(){return this._websiteUrl;}
+    get websiteUrl() {
+        return this._websiteUrl;
+    }
 
-    get callbackUrl(){return this._callbackUrl;}
+    get callbackUrl() {
+        return this._callbackUrl;
+    }
 
-    get termsOfServiceUrl(){return this._termsOfServiceUrl;}
+    get termsOfServiceUrl() {
+        return this._termsOfServiceUrl;
+    }
 
-    get key(){return this._key;}
+    get key() {
+        return this._key;
+    }
 
-    get secret(){return this._secret;}
+    get secret() {
+        return this._secret;
+    }
 
-    set websiteUrl(value){this._websiteUrl = value;}
+    set websiteUrl(value) {
+        this._websiteUrl = value;
+    }
 
-    set callbackUrl(value){this._callbackUrl = value;}
+    set callbackUrl(value) {
+        this._callbackUrl = value;
+    }
 
-    set termsOfServiceUrl(value){this._termsOfServiceUrl = value;}
+    set termsOfServiceUrl(value) {
+        this._termsOfServiceUrl = value;
+    }
 
-    set key(value){this._key = value;}
+    set key(value) {
+        this._key = value;
+    }
 
-    set secret(value){this._secret = value;}
+    set secret(value) {
+        this._secret = value;
+    }
 
     clickOnDevelopersLink(name) {
         return this.client
@@ -56,7 +74,7 @@ class DisqusClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillDisqusSignInForm(login="prestotests+disqus@gmail.com", password="presto_tests") {
+    fillDisqusSignInForm(login = "prestotests+disqus@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Disqus.username_input, 90000)
             .setValue(external.FO.Disqus.username_input, login)
@@ -140,7 +158,7 @@ class DisqusClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingDisqusAccount(login='prestotests+disqus@gmail.com', password='presto_tests') {
+    connectingDisqusAccount(login = 'prestotests+disqus@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Disqus.username_input, 90000)
             .waitForExist(selector.FO.SocialConnect.Disqus.password_input, 90000)

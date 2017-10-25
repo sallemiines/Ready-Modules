@@ -1,57 +1,55 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class PinterestClient extends SocialConnect{
+class PinterestClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
-        this._url="";
+        this._url = "";
         this._siteUrl = "";
         this._redirectUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get url(){
+    get url() {
         return this._url;
     }
 
-    get siteUrl(){
+    get siteUrl() {
         return this._siteUrl;
     }
 
-    get redirectUrl(){
+    get redirectUrl() {
         return this._redirectUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set url(value){
+    set url(value) {
         this._url = value;
     }
 
-    set siteUrl(value){
+    set siteUrl(value) {
         this._siteUrl = value;
     }
 
-    set redirectUrl(value){
+    set redirectUrl(value) {
         this._redirectUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -74,7 +72,7 @@ class PinterestClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillPinterestSignInForm(login="prestotests+pinterest@gmail.com", password="presto_tests") {
+    fillPinterestSignInForm(login = "prestotests+pinterest@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Pinterest.username_input, 90000)
             .setValue(external.FO.Pinterest.username_input, login)
@@ -118,7 +116,7 @@ class PinterestClient extends SocialConnect{
 
     setRedirectUrl() {
         return this.client
-            //.moveToObject(this.external.FO.Pinterest.delete_redirect_url_icon)
+        //.moveToObject(this.external.FO.Pinterest.delete_redirect_url_icon)
             .waitForExist(external.FO.Pinterest.delete_redirect_url_icon)
             .click(external.FO.Pinterest.delete_redirect_url_icon)
             .pause(3000)
@@ -159,7 +157,7 @@ class PinterestClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingPinterestAccount(login='prestotests+pinterest@gmail.com', password='presto_tests') {
+    connectingPinterestAccount(login = 'prestotests+pinterest@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Pinterest.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Pinterest.username_input, login)
@@ -184,7 +182,9 @@ class PinterestClient extends SocialConnect{
             .pause(3000)
 
             .then(() => this.client.getText(selector.FO.SocialConnect.Twitter.check_sent_email_p))
-            .then((value) => {expect(value).to.eql("Password has been sent to your mailbox: "+login)})
+            .then((value) => {
+                expect(value).to.eql("Password has been sent to your mailbox: " + login)
+            })
             .url('https://' + URL)
 
             .then(() => this.client.windowHandles())

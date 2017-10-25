@@ -1,48 +1,46 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class VkontakteClient extends SocialConnect{
+class VkontakteClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._siteUrl = "";
         this._baseDomain = "";
         this._key = "";
         this._secret = "";
     }
 
-    get siteUrl(){
+    get siteUrl() {
         return this._siteUrl;
     }
 
-    get baseDomain(){
+    get baseDomain() {
         return this._baseDomain;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set siteUrl(value){
+    set siteUrl(value) {
         this._siteUrl = value;
     }
 
-    set baseDomain(value){
+    set baseDomain(value) {
         this._baseDomain = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -50,7 +48,10 @@ class VkontakteClient extends SocialConnect{
         return this.client
             .waitForExist(selector.BO.ModulePageSocialConnect.Vkontakte.site_address_input, 90000)
             .then(() => this.client.getAttribute(selector.BO.ModulePageSocialConnect.Vkontakte.site_address_input, 'value'))
-            .then((site) => {this.siteUrl = site; this.baseDomain = site.split('https://').pop().split('/').shift();})
+            .then((site) => {
+                this.siteUrl = site;
+                this.baseDomain = site.split('https://').pop().split('/').shift();
+            })
 
             .waitForExist(selector.BO.ModulePageSocialConnect.Common.developers_link.replace("%NAME", name), 90000)
             .click(selector.BO.ModulePageSocialConnect.Common.developers_link.replace("%NAME", name))
@@ -59,7 +60,7 @@ class VkontakteClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillVkontakteSignInForm(login="prestotestsvkontakte@gmail.com", password="presto_tests") {
+    fillVkontakteSignInForm(login = "prestotestsvkontakte@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Vkontakte.username_input, 90000)
             .waitForExist(external.FO.Vkontakte.password_input, 90000)
@@ -147,7 +148,7 @@ class VkontakteClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingVkontakteAccount(login='prestotestsvkontakte@gmail.com', password='presto_tests') {
+    connectingVkontakteAccount(login = 'prestotestsvkontakte@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Vkontakte.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Vkontakte.username_input, login)

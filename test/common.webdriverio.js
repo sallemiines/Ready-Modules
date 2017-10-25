@@ -1,7 +1,9 @@
-const webdriverio = require('webdriverio');
-const globals = require('./globals.webdriverio');
+'use strict';
 var client;
-const options = {
+var webdriverio = require('webdriverio');
+var globals = require('./globals.webdriverio');
+
+var options = {
     logLevel: 'silent',
     waitForTimeout: 30000,
     desiredCapabilities: {
@@ -9,12 +11,9 @@ const options = {
     },
     port: 4444
 };
-if (typeof global.selenium_url !== 'undefined') {
-    options.host = global.selenium_url;
-}
 
-const options2 = {
-    logLevel: 'debug',
+var options2 = {
+    logLevel: 'silent',
     waitForTimeout: 30000,
     desiredCapabilities: {
         browserName: 'chrome',
@@ -29,62 +28,56 @@ const options2 = {
 
 function initCommands(client) {
 
-    client.addCommand('localhost', function(cb) {
+    client.addCommand('localhost', function (cb) {
         this.selector = globals.selector;
         client
-        .url('http://' + URL + 'install-dev')
-        .call(cb);
+            .url('http://' + URL + 'install-dev')
+            .call(cb);
     });
 
-    client.addCommand('signinBO', function(cb) {
+    client.addCommand('signinBO', function () {
         this.selector = globals.selector;
-        client
-        .url('http://' + URL + '/admin-dev')
-        .waitForExist(this.selector.login, 90000)
-        .setValue(this.selector.login, 'demo@prestashop.com')
-        .setValue(this.selector.password, 'prestashop_demo')
-        .click(this.selector.login_btn)
-        .waitForExist(this.selector.menu, 90000)
-        .call(cb);
+        return client
+            .url('https://' + URL + '/backoffice/')
+            .waitForExist(this.selector.BO.LoginPage.login_input, 90000)
+            .setValue(this.selector.BO.LoginPage.login_input, 'remi.gaillard@prestashop.com')
+            .setValue(this.selector.BO.LoginPage.password_input, 'abcd1234')
+            .click(this.selector.BO.LoginPage.login_button)
+            .waitForExist(this.selector.BO.Common.menu, 90000)
     });
 
-    client.addCommand('signinFO', function(cb) {
+    client.addCommand('signinFO', function () {
         this.selector = globals.selector;
-        client
-        .url('http://' + URL)
-        .waitForExist(this.selector.access_loginFO, 90000)
-        .click(this.selector.access_loginFO)
-        .waitForExist(this.selector.loginFO, 90000)
-        .setValue(this.selector.loginFO, 'pub@prestashop.com')
-        .setValue(this.selector.passwordFO, '123456789')
-        .click(this.selector.login_btnFO)
-        .call(cb);
+        return client
+            .url('https://' + URL)
+            .waitForExist(this.selector.FO.AccessPage.access_loginFO, 90000)
+            .click(this.selector.FO.AccessPage.access_loginFO)
+            .waitForExist(this.selector.FO.AccessPage.loginFO, 90000)
+            .setValue(this.selector.FO.AccessPage.loginFO, 'pub@prestashop.com')
+            .setValue(this.selector.FO.AccessPage.passwordFO, '123456789')
+            .click(this.selector.FO.AccessPage.login_btnFO)
+            .waitForExist(this.selector.FO.AccessPage.logo_home_page);
     });
 
-    client.addCommand('signoutBO', function(cb) {
+    client.addCommand('signoutBO', function () {
         this.selector = globals.selector;
-        client
-        .deleteCookie()
-        .call(cb);
+        return client
+            .deleteCookie()
     });
 
-    client.addCommand('signoutBO2', function(cb) {
+    client.addCommand('signoutBO2', function () {
         this.selector = globals.selector;
-        client
-        .deleteCookie()
-        .call(cb);
+        return client
+            .deleteCookie()
     });
 
-    client.addCommand('signoutFO', function(cb) {
+    client.addCommand('signoutFO', function () {
         this.selector = globals.selector;
-        client
-        /*.waitForExist(this.selector.logoutFO, 90000)
-         .click(this.selector.logoutFO)
-         .waitForExist(this.selector.access_loginFO, 90000)*/
-        .deleteCookie()
-        .call(cb);
+        return client
+            .deleteCookie()
     });
-}
+};
+
 module.exports = {
     getClient: function () {
         if (client) {
@@ -94,47 +87,16 @@ module.exports = {
                 client = webdriverio
                     .remote(options2)
                     .init()
-                    .windowHandleSize({width: 1680, height: 1050});
+                    .windowHandleMaximize()
             } else {
                 client = webdriverio
                     .remote(options)
                     //.init()
-                    .windowHandleSize({width: 1680, height: 1050});
+                    .windowHandleMaximize()
             }
             initCommands(client);
 
             return client;
         }
     },
-    // after: function (done) {
-    //     done();
-    // },
-    initMocha: function () {
-        this.timeout(900000000);
-        this.slow(45000);
-    }
 };
-
-// const createClient = () => {
-//     let client;
-//     if (typeof saucelabs !== 'undefined' && saucelabs != 'None') {
-//         client = webdriverio
-//         .remote(options2)
-//         .init()
-//         .windowHandleSize({ width: 1280, height: 1024 });
-//     } else {
-//         client = webdriverio.remote(options)
-//     }
-//     initCommands(client);
-//     return client;
-// };
-//
-//
-// module.exports = {
-//
-//     createClient,
-//
-//     browser: function() {
-//         return options.desiredCapabilities.browserName
-//     }
-// };

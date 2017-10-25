@@ -1,13 +1,11 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class FoursquareClient extends SocialConnect{
+class FoursquareClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._welcomePageUrl = "";
         this._privacyPolicyUrl = "";
         this._redirectUrl = "";
@@ -15,25 +13,45 @@ class FoursquareClient extends SocialConnect{
         this._secret = "";
     }
 
-    get welcomePageUrl(){return this._welcomePageUrl;}
+    get welcomePageUrl() {
+        return this._welcomePageUrl;
+    }
 
-    get privacyPolicyUrl(){return this._privacyPolicyUrl;}
+    get privacyPolicyUrl() {
+        return this._privacyPolicyUrl;
+    }
 
-    get redirectUrl(){return this._redirectUrl;}
+    get redirectUrl() {
+        return this._redirectUrl;
+    }
 
-    get key(){return this._key;}
+    get key() {
+        return this._key;
+    }
 
-    get secret(){return this._secret;}
+    get secret() {
+        return this._secret;
+    }
 
-    set welcomePageUrl(value){this._welcomePageUrl = value;}
+    set welcomePageUrl(value) {
+        this._welcomePageUrl = value;
+    }
 
-    set privacyPolicyUrl(value){this._privacyPolicyUrl = value;}
+    set privacyPolicyUrl(value) {
+        this._privacyPolicyUrl = value;
+    }
 
-    set redirectUrl(value){this._redirectUrl = value;}
+    set redirectUrl(value) {
+        this._redirectUrl = value;
+    }
 
-    set key(value){this._key = value;}
+    set key(value) {
+        this._key = value;
+    }
 
-    set secret(value){this._secret = value;}
+    set secret(value) {
+        this._secret = value;
+    }
 
     clickOnDevelopersLink(name) {
         return this.client
@@ -56,7 +74,7 @@ class FoursquareClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillFoursquareSignInForm(login="prestotests+foursquare@gmail.com", password="presto_tests") {
+    fillFoursquareSignInForm(login = "prestotests+foursquare@gmail.com", password = "presto_tests") {
         return this.client
             .waitForVisible(external.FO.Foursquare.username_input, 90000)
             .setValue(external.FO.Foursquare.username_input, login)
@@ -140,7 +158,7 @@ class FoursquareClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingFoursquareAccount(login='prestotests+foursquare@gmail.com', password='presto_tests') {
+    connectingFoursquareAccount(login = 'prestotests+foursquare@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForVisible(selector.FO.SocialConnect.Foursquare.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Foursquare.username_input, login)

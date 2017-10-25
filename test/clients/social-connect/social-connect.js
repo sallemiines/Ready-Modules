@@ -1,34 +1,19 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
+const {getClient} = require('../../common.webdriverio');
+const {selector} = require('../../globals.webdriverio.js');
 
 class SocialConnect {
     constructor() {
         this.client = getClient();
     }
 
-    fillSignInForm(login = 'remi.gaillard@prestashop.com', password = 'abcd1234') {
-        return this.client
-            .url(`https://${URL}/backoffice`)
-            .waitForExist(selector.BO.AccessPage.login_input, 60000)
-            .waitForExist(selector.BO.AccessPage.password_input, 60000)
-            .setValue(selector.BO.AccessPage.login_input, login)
-            .setValue(selector.BO.AccessPage.password_input, password)
-            .click(selector.BO.AccessPage.login_button)
-            .pause(5000);
-    }
-
-    waitForBackOffice() {
-        return this.client.waitForText(selector.backoffice_title, 15000)
-            .then(() => this.client.getText(selector.backoffice_title))
-            .then((title) => expect(title).to.be.equal('Tableau de bord'))
-            .then(() => this.client.getUrl())
-            .then(url => expect(url).to.contains('backoffice'));
+    fillSignInForm() {
+        return this.client.signinBO();
     }
 
     accessToFrontOffice() {
         return this.client
             .url(`https://${URL}/`)
-            .waitForExist(selector.logo_home_pageFO, 90000)
+            .waitForExist(selector.FO.AccessPage.logo_home_page, 90000)
             .pause(3000)
     }
 
@@ -37,7 +22,7 @@ class SocialConnect {
     };
 
     open() {
-        return this.client.init().windowHandleSize({ width: 1280, height: 1024 });
+        return this.client.init().windowHandleSize({width: 1280, height: 1024});
     }
 
     goToModule() {
@@ -49,13 +34,12 @@ class SocialConnect {
 
     clickOnConfigureButton() {
         return this.client
-            .waitForExist(selector.BO.ModulesPage.module_tech_name, 90000)
-            .waitForExist(selector.BO.ModulesPage.configuration_button,90000)
+            .waitForExist(selector.BO.ModulesPage.configuration_button, 90000)
             .click(selector.BO.ModulesPage.configuration_button)
             .pause(5000);
     }
 
-    searchModule(name){
+    searchModule(name) {
         return this.client
             .waitForExist(selector.BO.ModulesPage.search_input, 60000)
             .setValue(selector.BO.ModulesPage.search_input, name)
@@ -73,7 +57,9 @@ class SocialConnect {
     waitForConfigurePage(name) {
         return this.client.waitForText(selector.BO.ModulePageSocialConnect.Common.title_page_name.replace("%NAME", name), 15000)
             .then(() => this.client.getText(selector.BO.ModulePageSocialConnect.Common.title_page_name.replace("%NAME", name)))
-            .then((title) => {expect(title).to.have.string(name.toUpperCase())})
+            .then((title) => {
+                expect(title).to.have.string(name.toUpperCase())
+            })
             .pause(5000);
     }
 
@@ -83,7 +69,9 @@ class SocialConnect {
             .click(selector.FO.AccessPage.logo_home_page)
             .waitForExist(selector.FO.AccessPage.first_product_home_page, 90000)
             .then(() => this.client.getText(selector.FO.AccessPage.first_product_home_page_name))
-            .then((text) => {global.my_name = text[1].split('...')[0]})
+            .then((text) => {
+                global.my_name = text[1].split('...')[0]
+            })
 
             .waitForExist(selector.FO.AccessPage.first_product_home_page, 90000)
             .click(selector.FO.AccessPage.first_product_home_page)
@@ -97,11 +85,15 @@ class SocialConnect {
 
             .waitForExist(selector.FO.ProductPage.product_price_details, 90000)
             .then(() => this.client.getText(selector.FO.ProductPage.product_price_details))
-            .then((text) => {global.my_price = text})
+            .then((text) => {
+                global.my_price = text
+            })
 
             .waitForExist(selector.FO.ProductPage.product_quantity_details, 90000)
             .then(() => this.client.getValue(selector.FO.ProductPage.product_quantity_details))
-            .then((text) => {global.my_quantity = text})
+            .then((text) => {
+                global.my_quantity = text
+            })
 
             .waitForExist(selector.FO.ProductPage.add_to_cart_button, 90000)
             .click(selector.FO.ProductPage.add_to_cart_button)
@@ -226,29 +218,26 @@ class SocialConnect {
             .waitForExist(selector.FO.ProductPage.order_confirmation_name, 90000)
             .then(() => this.client.getText(selector.FO.ProductPage.order_confirmation_name))
             .then((text) => {
-                var command_confirmation_my_name = text;
-                expect(command_confirmation_my_name.toLowerCase()).to.have.string(my_name.toLowerCase());
+                expect(text.toLowerCase()).to.have.string(my_name.toLowerCase());
             })
 
             .waitForExist(selector.FO.ProductPage.order_confirmation_price1, 90000)
             .then(() => this.client.getText(selector.FO.ProductPage.order_confirmation_price1))
             .then((text) => {
-                var order_confirmation_price1 = text;
-                expect(order_confirmation_price1).to.eql(my_price);
+                expect(text).to.eql(my_price);
             })
 
             .moveToObject(selector.FO.ProductPage.customer_support_link, 90000)
             .waitForExist(selector.FO.ProductPage.order_confirmation_price2, 90000)
             .then(() => this.client.getText(selector.FO.ProductPage.order_confirmation_price2))
             .then((text) => {
-                var order_confirmation_price2 = text;
-                expect(order_confirmation_price2).to.eql(my_price);
+                expect(text).to.eql(my_price);
             })
 
             .waitForExist(selector.FO.ProductPage.order_confirmation_ref, 90000)
             .then(() => this.client.getText(selector.FO.ProductPage.order_confirmation_ref))
             .then((text) => {
-                var my_ref = text.split(': ')
+                var my_ref = text.split(': ');
                 global.order_reference = my_ref[1];
             })
             .pause(5000);
@@ -266,7 +255,7 @@ class SocialConnect {
             .pause(5000);
     }
 
-    goToCustomers(){
+    goToCustomers() {
         return this.client
             .waitForExist(selector.BO.CustomersPage.customer_subtab, 90000)
             .click(selector.BO.CustomersPage.customer_subtab)
@@ -289,7 +278,7 @@ class SocialConnect {
 
     checkCutomer(name) {
         let logo_customer_page_selector = selector.BO.ModulePageSocialConnect.Common.logo_customer_page;
-        if(name === "twitter"){
+        if (name === "twitter") {
             logo_customer_page_selector = logo_customer_page_selector.replace('6', '5');
         }
         return this.client
@@ -297,10 +286,14 @@ class SocialConnect {
             .moveToObject(logo_customer_page_selector)
 
             .then(() => this.client.getAttribute(logo_customer_page_selector, 'title'))
-            .then((title) => {expect(title.toLowerCase()).to.have.string(name.toLowerCase())})
+            .then((title) => {
+                expect(title.toLowerCase()).to.have.string(name.toLowerCase())
+            })
 
             .then(() => this.client.getAttribute(logo_customer_page_selector, 'alt'))
-            .then((alt) => {expect(alt.toLowerCase()).to.have.string(name.toLowerCase())})
+            .then((alt) => {
+                expect(alt.toLowerCase()).to.have.string(name.toLowerCase())
+            })
     }
 
     checkConnections(user_name) {
@@ -308,7 +301,9 @@ class SocialConnect {
             .waitForVisible(selector.FO.SocialConnect.Common.user_connected_span, 90000)
             .moveToObject(selector.FO.SocialConnect.Common.user_connected_span)
             .then(() => this.client.getText(selector.FO.SocialConnect.Common.user_connected_span))
-            .then((user) => {expect(user).to.eql(user_name)})
+            .then((user) => {
+                expect(user).to.eql(user_name)
+            })
             .pause(5000);
     }
 

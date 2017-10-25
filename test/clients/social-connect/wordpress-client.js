@@ -1,13 +1,11 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class WordpressClient extends SocialConnect{
+class WordpressClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._websiteUrl = "";
         this._redirectUrl = "";
         this._javascriptOriginsUrl = "";
@@ -15,25 +13,45 @@ class WordpressClient extends SocialConnect{
         this._secret = "";
     }
 
-    get websiteUrl(){return this._websiteUrl;}
+    get websiteUrl() {
+        return this._websiteUrl;
+    }
 
-    get redirectUrl(){return this._redirectUrl;}
+    get redirectUrl() {
+        return this._redirectUrl;
+    }
 
-    get javascriptOriginsUrl(){return this._javascriptOriginsUrl;}
+    get javascriptOriginsUrl() {
+        return this._javascriptOriginsUrl;
+    }
 
-    get key(){return this._key;}
+    get key() {
+        return this._key;
+    }
 
-    get secret(){return this._secret;}
+    get secret() {
+        return this._secret;
+    }
 
-    set websiteUrl(value){this._websiteUrl = value;}
+    set websiteUrl(value) {
+        this._websiteUrl = value;
+    }
 
-    set redirectUrl(value){this._redirectUrl = value;}
+    set redirectUrl(value) {
+        this._redirectUrl = value;
+    }
 
-    set javascriptOriginsUrl(value){this._javascriptOriginsUrl = value;}
+    set javascriptOriginsUrl(value) {
+        this._javascriptOriginsUrl = value;
+    }
 
-    set key(value){this._key = value;}
+    set key(value) {
+        this._key = value;
+    }
 
-    set secret(value){this._secret = value;}
+    set secret(value) {
+        this._secret = value;
+    }
 
     clickOnDevelopersLink(name) {
         return this.client
@@ -56,7 +74,7 @@ class WordpressClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillWordpressSignInForm(login="prestotests+wordpress@gmail.com", password="presto_tests") {
+    fillWordpressSignInForm(login = "prestotests+wordpress@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Wordpress.username_input, 90000)
             .setValue(external.FO.Wordpress.username_input, login)
@@ -140,7 +158,7 @@ class WordpressClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingWordpressAccount(login='prestotests+wordpress@gmail.com', password='presto_tests') {
+    connectingWordpressAccount(login = 'prestotests+wordpress@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForExist(selector.FO.SocialConnect.Wordpress.username_input, 90000)
             .waitForExist(selector.FO.SocialConnect.Wordpress.password_input, 90000)

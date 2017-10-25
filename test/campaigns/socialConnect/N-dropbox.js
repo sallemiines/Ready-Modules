@@ -1,53 +1,50 @@
 // @TODO:fix connection dropbox in FO ("error": "v1_retired")
-scenario(`SocialConnect/${social_connect[12].toUpperCase()}`, client => {
-    scenario(`SocialConnect/Configuration - ${social_connect[12].toUpperCase()} - BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to module page', () => client.goToModule());
-        test('search the module', () => client.searchModule(module_tech_name));
-        test('click on configure button', () => client.clickOnConfigureButton());
-        test(`click on ${social_connect[12]} menu tab`, () => client.ClickOnConfigurationAccountMenu(15));
-        test('configuration page is shown', () => client.waitForConfigurePage(social_connect[12]));
-        test(`click on ${social_connect[12]} developers link`, () => client.clickOnDevelopersLink(social_connect[12]));
-        test(`log in with ${social_connect[12]} account`, () => client.fillDropboxSignInForm());
-        test('access to the application', () => client.accessToApplication());
-        test('delete old redirect url', () => client.clickOnDeleteOldRedirectIcon());
-        test('add new redirect url', () => client.setRedirectUrl());
-        test('update configuration settings', () => client.fillConfigurationForm());
-    }, "social-connect/dropbox-client");
-
-    scenario(`SocialConnect/Connect with - ${social_connect[12].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test(`click on ${social_connect[12]} button`, () => client.clickOnDropboxButton(social_connect[12]));
-        test(`should connecting with ${social_connect[12]} account`, () => client.connectingDropboxAccount());
+scenario('Test dropbox', client => {
+    scenario('Configure dropbox in Back Office', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to module page', () => client.goToModule());
+        test('should search the module', () => client.searchModule('fbloginblock'));
+        test('should click on configure button', () => client.clickOnConfigureButton());
+        test('should click on dropbox menu tab', () => client.ClickOnConfigurationAccountMenu(15));
+        test('should configuration page is shown', () => client.waitForConfigurePage('dropbox'));
+        test('should click on dropbox developers link', () => client.clickOnDevelopersLink('dropbox'));
+        test('should log in with dropbox account', () => client.fillDropboxSignInForm());
+        test('should access to the application', () => client.accessToApplication());
+        test('should delete old redirect url', () => client.clickOnDeleteOldRedirectIcon());
+        test('should add new redirect url', () => client.setRedirectUrl());
+        test('should update configuration settings', () => client.fillConfigurationForm());
+    }, "social-connect/dropbox-client", true);
+    scenario('Connect with dropbox account in FronOffice', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should click on dropbox button', () => client.clickOnDropboxButton('dropbox'));
+        test('should connecting with dropbox account', () => client.connectingDropboxAccount());
         test('should check the connection', () => client.checkConnections('Tests Presto'));
-    }, "social-connect/dropbox-client");
-
-    scenario(`SocialConnect/Check customer - ${social_connect[12].toUpperCase()} - in BackOffice`, client => {
-        test('open browser', () => client.open());
-        test('sign in', () => client.fillSignInForm());
-        test('access to customers page', () => client.goToCustomers());
-        test('filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+dropbox@gmail.com"));
-        test('click on search button', () => client.clickOnSearchButton());
-        test(`should check ${social_connect[12]} customer`, () => client.checkCutomer(social_connect[12]));
-    }, "social-connect/dropbox-client");
-
-    scenario(`SocialConnect/Buy product with - ${social_connect[12].toUpperCase()} - account in FrontOffice`, client => {
-        test('open browser', () => client.open());
-        test('access to front office', () => client.accessToFrontOffice());
-        test('go to product details', () => client.goToProductDetails());
-        test('click on add to cart button', () => client.clickOnAddToCartButton());
+    }, "social-connect/dropbox-client", true);
+    scenario('Check dropbox customer in BackOffice', client => {
+        test('should open the browser', () => client.open());
+        test('should sign in', () => client.fillSignInForm());
+        test('should access to customers page', () => client.goToCustomers());
+        test('should filter the list of customers by email', () => client.filterListCustomerByAddressEmail("prestotests+dropbox@gmail.com"));
+        test('should click on search button', () => client.clickOnSearchButton());
+        test('should check dropbox customer', () => client.checkCutomer('dropbox'));
+    }, "social-connect/dropbox-client", true);
+    scenario('Buy product with dropbox account in FrontOffice', client => {
+        test('should open the browser', () => client.open());
+        test('should access to front office', () => client.accessToFrontOffice());
+        test('should go to product details', () => client.goToProductDetails());
+        test('should click on add to cart button', () => client.clickOnAddToCartButton());
         test('should validate name of product', () => client.validateNameProduct());
         test('should validate price of product', () => client.validatePriceProduct());
-        test('click on checkout button', () => client.clickOnCheckoutButton());
-        test('click on connect button', () => client.clickOnConnectButton());
-        test(`click on ${social_connect[12]} button`, () => client.clickOnConnectAccountButton(13));
-        test(`should connecting with ${social_connect[12]} account`, () => client.connectingDropboxAccount());
+        test('should click on checkout button', () => client.clickOnCheckoutButton());
+        test('should click on connect button', () => client.clickOnConnectButton());
+        test('should click on dropbox button', () => client.clickOnConnectAccountButton(13));
+        test('should connecting with dropbox account', () => client.connectingDropboxAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());
         test('should select the shipping method step-4', () => client.selectShippingMethodStep4());
         test('should confirm the order', () => client.confirmationOrder());
         test('should get the order id', () => client.getOrderId());
-    }, "social-connect/dropbox-client");
-}, "social-connect/dropbox-client");
+    }, "social-connect/dropbox-client", true);
+}, "social-connect/dropbox-client", true);

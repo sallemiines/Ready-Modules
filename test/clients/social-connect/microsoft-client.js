@@ -1,50 +1,50 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class MicrosoftClient extends SocialConnect{
+class MicrosoftClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._redirectUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get redirectUrl(){
+    get redirectUrl() {
         return this._redirectUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set redirectUrl(value){
+    set redirectUrl(value) {
         this._redirectUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
     waitForConfigurePage(name) {
         let other_name = "";
-        if(name === 'hotmail'){
+        if (name === 'hotmail') {
             other_name = 'microsoft';
         }
         return this.client.waitForText(selector.BO.ModulePageSocialConnect.Common.title_page_name.replace("%NAME", name), 15000)
             .then(() => this.client.getText(selector.BO.ModulePageSocialConnect.Common.title_page_name.replace("%NAME", name)))
-            .then((title) => {expect(title).to.have.string(other_name.toUpperCase())})
+            .then((title) => {
+                expect(title).to.have.string(other_name.toUpperCase())
+            })
             .pause(5000);
     }
 
@@ -61,7 +61,7 @@ class MicrosoftClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillMicrosoftSignInForm(login="prestotests@outlook.com", password="presto_tests") {
+    fillMicrosoftSignInForm(login = "prestotests@outlook.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Microsoft.username_input, 90000)
             .setValue(external.FO.Microsoft.username_input, login)
@@ -136,7 +136,7 @@ class MicrosoftClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingMicrosoftAccount(login='prestotests@outlook.com', password='presto_tests') {
+    connectingMicrosoftAccount(login = 'prestotests@outlook.com', password = 'presto_tests') {
         return this.client
             .waitForVisible(selector.FO.SocialConnect.Microsoft.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Microsoft.username_input, login)

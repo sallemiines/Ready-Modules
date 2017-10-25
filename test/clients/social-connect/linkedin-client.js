@@ -1,39 +1,37 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class LinkedinClient extends SocialConnect{
+class LinkedinClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._websiteUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get websiteUrl(){
+    get websiteUrl() {
         return this._websiteUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set websiteUrl(value){
+    set websiteUrl(value) {
         this._websiteUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -57,7 +55,7 @@ class LinkedinClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillLinkedinSignInForm(login="prestotestslinkedin@gmail.com", password="presto_tests") {
+    fillLinkedinSignInForm(login = "prestotestslinkedin@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Linkedin.username_input, 90000)
             .setValue(external.FO.Linkedin.username_input, login)
@@ -128,7 +126,7 @@ class LinkedinClient extends SocialConnect{
             .pause(5000);
     }
 
-    connectingLinkedinAccount(login='prestotestslinkedin@gmail.com', password='presto_tests') {
+    connectingLinkedinAccount(login = 'prestotestslinkedin@gmail.com', password = 'presto_tests') {
         return this.client
             .waitForVisible(selector.FO.SocialConnect.Linkedin.username_input, 90000)
             .setValue(selector.FO.SocialConnect.Linkedin.username_input, login)

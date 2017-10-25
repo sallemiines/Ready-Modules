@@ -1,48 +1,46 @@
-const { getClient } = require('../../common.webdriverio');
-const { selector } = require('../../globals.webdriverio.js');
-const { external } = require('../../external_globals.webdriverio.js');
+const {selector} = require('../../globals.webdriverio.js');
+const {external} = require('../../external_globals.webdriverio.js');
 const SocialConnect = require('./social-connect.js');
 
-class AmazonClient extends SocialConnect{
+class AmazonClient extends SocialConnect {
 
     constructor() {
         super();
-        this.client = getClient();
         this._websiteUrl = "";
         this._callbackUrl = "";
         this._key = "";
         this._secret = "";
     }
 
-    get websiteUrl(){
+    get websiteUrl() {
         return this._websiteUrl;
     }
 
-    get callbackUrl(){
+    get callbackUrl() {
         return this._callbackUrl;
     }
 
-    get key(){
+    get key() {
         return this._key;
     }
 
-    get secret(){
+    get secret() {
         return this._secret;
     }
 
-    set websiteUrl(value){
+    set websiteUrl(value) {
         this._websiteUrl = value;
     }
 
-    set callbackUrl(value){
+    set callbackUrl(value) {
         this._callbackUrl = value;
     }
 
-    set key(value){
+    set key(value) {
         this._key = value;
     }
 
-    set secret(value){
+    set secret(value) {
         this._secret = value;
     }
 
@@ -70,7 +68,7 @@ class AmazonClient extends SocialConnect{
             .pause(5000);
     }
 
-    fillTwitterSignInForm(login="prestotests+twitter@gmail.com", password="presto_tests") {
+    fillTwitterSignInForm(login = "prestotests+twitter@gmail.com", password = "presto_tests") {
         return this.client
             .waitForExist(external.FO.Twitter.signein_login_input, 90000)
             .setValue(external.FO.Twitter.signein_login_input, login)
