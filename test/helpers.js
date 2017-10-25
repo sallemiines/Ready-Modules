@@ -1,4 +1,3 @@
-'use strict';
 const chai = require('chai');
 chai.use(require('chai-string'));
 global.expect = chai.expect;
@@ -12,11 +11,13 @@ global.test = (name, instructions) => it(name, () => {
     return instructions().catch(takeScreenshot);
 });
 
-global.scenario = (name, tests, filename) =>
-    describe(name, () => {
-        const TowerClient = require('./clients/'+filename);
-        const client = new TowerClient();
+global.scenario = (name, tests, nameClass, close=false) =>
+        describe(name, () => {
+            const moduleClient = require('./clients/'+nameClass);
+        const client = new moduleClient();
         before(() => this.client = client);
         tests(client);
-        after(() => client.close());
-    });
+        if(close){
+            after(() => this.client.close());
+        }
+});

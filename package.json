@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "qa": "NODE_ENV=qa mocha test/campaigns --reporter mochawesome",
-    "social_connect": "mocha test/campaigns/socialConnect --URL=presto17101602.qa-prestashopready.net"
+    "social_connect": "mocha test/campaigns/socialConnect --URL=presto17101602.qa-prestashopready.net",
+    "block_youtube": "mocha test/campaigns/BlockYoutube-BackOffice.js --URL=prestest123.qa-prestashopready.net"
+
   },
   "repository": {
     "type": "git",

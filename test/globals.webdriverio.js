@@ -10,7 +10,11 @@ global.selenium_url = argv.SELENIUM;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
-
+global.module_tech_name_youtubeVideo = 'blockyoutubevideos';
+global.bannerInput = 'Video_test' + date_time;
+global.apiKey = 'AIzaSyCOtdBoSxX3pELiEQHNE47f7dCT0ptJzRg';
+global.videoUrlInput = 'https://www.youtube.com/watch?v=qRddgO4zPqo&list=PLGV9IzoUU7REWIyuJOQG064Xdk0S222SB';
+global.titleVideo = 'Test_video_product'
 global.module_tech_name = 'fbloginblock';
 
 module.exports = {
@@ -392,7 +396,44 @@ module.exports = {
                     customer_secret_input: '//*[@id="vcs"]',
                     save_button: '//*[@id="module_form_submit_btn_33"]'
                 }
-            }
+            },
+            ModuleBlockYoutubeVideo: {
+                config_module_button: '//*[@id="modules-list-container-all"]/div/div/div/div[5]/div[2]/form/button',
+                pdf_logo: '//*[@id="documentation"]/div/a/img',
+                prestashop_link: '//*[@id="documentation"]/div/ul[2]/li/a',
+                configuration_tab: '//*[@id="modulecontent"]/div[1]/div[1]/a[2]',
+                api_key_input: '//*[@id="google_api_key"]',
+                position_select: '//*[@id="page_position"]',
+                banner_button: '//*[@id="youtube_banner_switch"]/label[1]',
+                banner_txt: '#youtube_banner_text_1',
+                title_position_button: '//*[@id="custom_title_switch"]/label[1]',
+                title_position_select: '//*[@id="custom_title_position"]',
+                update_button: '//*[@id="config"]/div[1]/form/center/input',
+                page_product_video_button: '//*[@id="youtube_banner_switch"]/label[1]',
+                pop_up_video_button:'//*[@id="embed_type_thumb_label"]' ,
+
+
+            },
+            ProductSetting: {
+
+                categorie_menu: '//*[@id="subtab-AdminCatalog"]/a',
+                product_menu: '//*[@id="subtab-AdminProducts"]/a',
+                modules_button: '//*[@id="tab_hooks"]/a',
+                configure_button: '//*[@id="hooks"]/div/div/div/div/div/div[2]/div/div/div/div[3]/div/button',
+                language_list: '//*[@id="youtube_suggest_language"]',
+                title_video_input: '//*[@id="youtube_custom_title_1"]',
+                view_button: '//*[@id="product_form_preview_btn"]',
+                url_methode_button: '//*[@id="youtube_suggest_product_video_search"]/div[8]/div/label',
+                search_methode_button: '//*[@id="youtube_suggest_product_video_search"]/div[6]/div/label',
+                url_input: '//*[@id="url_youtube_input"]',
+                save_url_button: '//*[@id="url_youtube_input_div"]/div/div',
+                save_button: '//*[@id="submit"]',
+                update_product1: '//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[1]/td[9]/div/div/a[1]/i',
+                update_product2: '//*[@id="product_catalog_list"]/div[2]/div/table/tbody/tr[2]/td[9]/div/div/a[1]/i',
+                search_url_input:'//*[@id="search_youtube_input"]',
+                choose_video_button :'//*[@id="youtube_search_result_FHKI-XIXWT8"]/div[3]/div[2]/button'
+            },
+
         },
         //FO
         FO: {
@@ -548,7 +589,8 @@ module.exports = {
                 order_confirmation_price1: '#order-items > div > table > tbody > tr:nth-child(1) > td:nth-child(2)',
                 order_confirmation_price2: '#content-hook_payment_return > div > div > div > p > span > strong',
                 customer_support_link: '//*[@id="content-hook_payment_return"]/div/div/div/p/a',
-                order_confirmation_ref: '//*[@id="order-details"]/ul/li[1]'
+                order_confirmation_ref: '//*[@id="order-details"]/ul/li[1]',
+                product_video_title: '//h3[@class="youtube-header-banner page-product-heading h3"]'
             },
 
             //Cart summary selectors
