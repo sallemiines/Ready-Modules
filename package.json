@@ -5,7 +5,7 @@
     "qa": "NODE_ENV=qa mocha test/campaigns --reporter mochawesome",
     "social_connect": "mocha test/campaigns/socialConnect --URL=presto17101602.qa-prestashopready.net",
     "block_youtube": "mocha test/campaigns/BlockYoutube-BackOffice.js --URL=prestis123456.qa-prestashopready.net",
-    "mailchimp-integration": "mocha test/campaigns/MailChimp-Integration.js --URL=prestis123456.qa-prestashopready.net"
+    "mailchimp-integration": "mocha test/campaigns/mailchimpIntegration --URL=prestis123456.qa-prestashopready.net"
 
   },
   "repository": {
