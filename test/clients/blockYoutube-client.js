@@ -246,7 +246,7 @@ class blockYoutube  {
             })
     }
 
-    insetrtPopUpVideo() {
+    insertPopUpVideo() {
 
         return this.client
             .waitForExist(selector.BO.ModuleBlockYoutubeVideo.pop_up_video_button, 90000)
