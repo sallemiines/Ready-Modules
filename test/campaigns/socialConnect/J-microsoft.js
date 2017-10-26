@@ -1,3 +1,4 @@
+// @TODO: fix connecting with microsoft account in FO when we buy product(error 502 bad gatway)
 scenario('Test microsoft', client => {
     scenario('Configure microsoft in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -39,7 +40,7 @@ scenario('Test microsoft', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on microsoft button', () => client.clickOnConnectAccountButton(9));
+        test('should click on microsoft button', () => client.clickOnConnectAccountButton('microsoft'));
         test('should connecting with microsoft account', () => client.connectingMicrosoftAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());

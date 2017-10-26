@@ -11,9 +11,6 @@ global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 
-global.module_tech_name = 'fbloginblock';
-global.social_connect = ["facebook", "twitter", "amazon", "google", "pinterest", "yahoo", "paypal", "linkedin", "microsoft", "foursquare", "github", "disqus", "dropbox", "wordpress", "tumblr", "vkontakte"];
-
 module.exports = {
     selector: {
 
@@ -310,7 +307,7 @@ module.exports = {
                 layer_cart_command_button: '//*[@id="blockcart-modal"]/div/div/div[2]/div/div[2]/div/div/a',
                 command_product_name: '(//div[@class="product-line-info"])[1]/a',
                 command_product_price: '//span[@class="price"]',
-                command_checkout_button: '//*[@id="main"]/div/div[2]/div[1]/div[3]/div/a',
+                command_checkout_button: '//*[@id="main"]/div/div[2]/div[1]/div[2]/div/a',
                 checkout_step4_cgv: '//input[@id="conditions_to_approve[terms-and-conditions]"]',
                 checkout_step4_order: '#payment-confirmation >div > button',
                 order_confirmation_name: '#order-items > div > div > div.col-sm-4.col-xs-9.details > span',
@@ -341,7 +338,7 @@ module.exports = {
                 checkout_step3_continue_button: '//*[@id="js-delivery"]/button',
                 footer: '//*[@id="footer"]',
                 payment_option_radio: '//*[@id="payment-option-1"]',
-                first_logo: '//*[@id="fbloginblock-beforeauthpage"]/a[%ID]'
+                first_logo: '//a[@class="%SOCIAL custom-social-button-all custom-social-button-2"]'
             }
 
         }

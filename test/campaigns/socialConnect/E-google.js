@@ -1,3 +1,4 @@
+// @TODO: fix connecting with google account in FO when we buy product(error 502 bad gatway)
 scenario('Test google', client => {
     scenario('Configure google in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -44,7 +45,7 @@ scenario('Test google', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on google button', () => client.clickOnConnectAccountButton(4));
+        test('should click on google button', () => client.clickOnConnectAccountButton('google'));
         test('should connecting with google account', () => client.connectingGoogleAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delvery step-3', () => client.selectDelevryStep3());

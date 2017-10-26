@@ -89,11 +89,11 @@ class GoogleClient extends SocialConnect {
             .waitForExist(external.FO.Google.settings_button, 90000)
             .click(external.FO.Google.settings_button)
 
-            .waitForExist(external.FO.Google.api_and_services_menu, 90000)
+            .waitForVisible(external.FO.Google.api_and_services_menu, 90000)
             .moveToObject(external.FO.Google.api_and_services_menu)
             .pause(3000)
 
-            .waitForExist(external.FO.Google.identifiants_submenu, 90000)
+            .waitForVisible(external.FO.Google.identifiants_submenu, 90000)
             .click(external.FO.Google.identifiants_submenu)
             .pause(3000);
     }
@@ -116,13 +116,11 @@ class GoogleClient extends SocialConnect {
         return this.client
             .waitForExist(external.FO.Google.application_web_checkbox, 90000)
             .click(external.FO.Google.application_web_checkbox)
-            .pause(5000);
     }
 
     setJavaScriptOrigins() {
         return this.client
-            .waitForVisible(external.FO.Google.authorized_javaScript_input, 90000)
-            .pause(5000)
+            .waitForExist(external.FO.Google.authorized_javaScript_input, 90000)
             .click(external.FO.Google.authorized_javaScript_input)
             .keys(this.javaScriptOrigins)
             .click(external.FO.Google.click_outside_p)
@@ -132,7 +130,6 @@ class GoogleClient extends SocialConnect {
     setAuthorizedRedirectUri() {
         return this.client
             .waitForExist(external.FO.Google.authorized_redirect_input, 90000)
-            .pause(5000)
             .click(external.FO.Google.authorized_redirect_input)
             .keys(this.authorizedRedirectUri)
             .click(external.FO.Google.click_outside_p)

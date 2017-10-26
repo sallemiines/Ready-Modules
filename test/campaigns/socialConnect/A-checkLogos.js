@@ -1,3 +1,4 @@
+global.social_connect = ["facebook", "twitter", "amazon", "google", "pinterest", "yahoo", "paypal", "linkedin", "microsoft", "foursquare", "github", "disqus", "dropbox", "wordpress", "tumblr", "vkontakte"];
 scenario('Check all social network button in Front Office', client => {
     test('should open browser', () => client.open());
     test('should access to Front Office', () => client.accessToFrontOffice());

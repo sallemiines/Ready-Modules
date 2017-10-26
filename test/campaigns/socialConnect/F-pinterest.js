@@ -1,3 +1,4 @@
+// @TODO: fix connecting with pinterest account in FO when we buy product(error 502 bad gatway)
 scenario('Test pinterest', client => {
     scenario('Configure pinterest in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -41,7 +42,7 @@ scenario('Test pinterest', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on pinterest button', () => client.clickOnConnectAccountButton(5));
+        test('should click on pinterest button', () => client.clickOnConnectAccountButton('pinterest'));
         test('should connecting with pinterest account', () => client.connectingPinterestAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delvery step-3', () => client.selectDelevryStep3());

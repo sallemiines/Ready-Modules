@@ -168,8 +168,8 @@ class WordpressClient extends SocialConnect {
             .click(selector.FO.SocialConnect.Wordpress.login_button)
 
             .pause(3000)
-            .waitForExist(this.selector.FO.Wordpress.allow_button, 90000)
-            .click(this.selector.FO.Wordpress.allow_button)
+            .waitForExist(selector.FO.Wordpress.allow_button, 90000)
+            .click(selector.FO.Wordpress.allow_button)
 
             .then(() => this.client.windowHandles())
             .then((handles) => this.client.switchTab(handles.value[0]))

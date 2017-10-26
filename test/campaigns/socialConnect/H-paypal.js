@@ -1,4 +1,4 @@
-// @TODO:fix connecting with paypal in FO
+// @TODO:fix connecting with paypal in FO (error client_id ou redirect_uri incorrect)
 scenario('Test paypal', client => {
     scenario('Configure paypal in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -45,7 +45,7 @@ scenario('Test paypal', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on paypal button', () => client.clickOnConnectAccountButton(7));
+        test('should click on paypal button', () => client.clickOnConnectAccountButton('paypal'));
         test('should connecting with paypal account', () => client.connectingPaypalAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delvery step-3', () => client.selectDelevryStep3());

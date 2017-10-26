@@ -1,3 +1,4 @@
+// @TODO: fix connecting with foursquare account in FO when we buy product(error 502 bad gatway)
 scenario('Test foursquare', client => {
     scenario('Configure foursquare in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -41,7 +42,7 @@ scenario('Test foursquare', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on foursquare button', () => client.clickOnConnectAccountButton(10));
+        test('should click on foursquare button', () => client.clickOnConnectAccountButton('foursquare'));
         test('should connecting with foursquare account', () => client.connectingFoursquareAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());

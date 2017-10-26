@@ -165,10 +165,10 @@ class SocialConnect {
             .pause(5000);
     }
 
-    clickOnConnectAccountButton(id) {
+    clickOnConnectAccountButton(name) {
         return this.client
-            .waitForExist(selector.FO.Commande.first_logo.replace("%ID", id), 90000)
-            .click(selector.FO.Commande.first_logo.replace("%ID", id))
+            .waitForExist(selector.FO.Commande.first_logo.replace("%SOCIAL", name), 90000)
+            .click(selector.FO.Commande.first_logo.replace("%SOCIAL", name))
 
             .then(() => this.client.windowHandles())
             .then(handles => this.client.switchTab(handles.value[1]))

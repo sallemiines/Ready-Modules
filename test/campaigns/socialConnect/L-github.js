@@ -1,3 +1,4 @@
+// @TODO: fix connecting with github account in FO when we buy product(error 502 bad gatway)
 scenario('Test github', client => {
     scenario('Configure github Back Office', client => {
         test('should open the browser', () => client.open());
@@ -40,7 +41,7 @@ scenario('Test github', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on github button', () => client.clickOnConnectAccountButton(11));
+        test('should click on github button', () => client.clickOnConnectAccountButton('github'));
         test('should connecting with github account', () => client.connectingGithubAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());

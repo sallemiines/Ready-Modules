@@ -1,3 +1,4 @@
+// @TODO: fix connecting with disqus account in FO when we buy product(error 502 bad gatway)
 scenario('Test disqus', client => {
     scenario('Configure disqus in Back Office', client => {
         test('should open the browser', () => client.open());
@@ -41,7 +42,7 @@ scenario('Test disqus', client => {
         test('should validate price of product', () => client.validatePriceProduct());
         test('should click on checkout button', () => client.clickOnCheckoutButton());
         test('should click on connect button', () => client.clickOnConnectButton());
-        test('should click on disqus button', () => client.clickOnConnectAccountButton(12));
+        test('should click on disqus button', () => client.clickOnConnectAccountButton('disqus'));
         test('should connecting with disqus account', () => client.connectingDisqusAccount());
         test('should select the address step-2', () => client.fillAddressForm());
         test('should select the delivery step-3', () => client.selectDelevryStep3());
