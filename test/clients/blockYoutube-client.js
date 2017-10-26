@@ -140,7 +140,7 @@ class blockYoutube  {
             .selectByValue(selector.BO.ModuleBlockYoutubeVideo.title_position_select, 0)
     }
 
-    clickupdateButton() {
+    clickUpdateButton() {
         return this.client
             .waitForExist(selector.BO.ModuleBlockYoutubeVideo.update_button, 90000)
             .click(selector.BO.ModuleBlockYoutubeVideo.update_button)
@@ -193,7 +193,7 @@ class blockYoutube  {
             .pause(7000)
     }
 
-    addTitle() {
+    addVideoTitle() {
         return this.client
             .waitForExist(selector.BO.ProductSetting.title_video_input, 90000)
             .click(selector.BO.ProductSetting.title_video_input)
@@ -263,7 +263,7 @@ class blockYoutube  {
             .pause(9000)
     }
 
-    selectSearchVideotMethode() {
+    selectSearchVideoMethode() {
         return this.client
             .waitForExist(selector.BO.ProductSetting.search_methode_button, 90000)
             .click(selector.BO.ProductSetting.search_methode_button)

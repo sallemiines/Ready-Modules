@@ -18,7 +18,7 @@ scenario('BlockYoutube-BackOffice', client => {
             test('should add a banner text', () => client.configBannerTxt());
             test('should add title ', () => client.configTitle());
             test('should add title position ', () => client.configTitlePosition());
-            test('should click on update button ', () => client.clickupdateButton());
+            test('should click on update button ', () => client.clickUpdateButton());
         }, "blockYoutube-client");
     }, "blockYoutube-client");
     scenario('configure video in page product', () => {
@@ -63,8 +63,8 @@ scenario('Test N°2 = Configure the  blockYoutubeModule with "Insert the video i
         test('should click on module in page product ', () => client.clickModuleButton());
         test('should click on configure ', () => client.clickConfigureButtoun());
         test('should select type of language ', () => client.selectLanguage());
-        test('should add title video', () => client.addTitle());
-        test('should select method ', () => client.selectSearchVideotMethode());
+        test('should add title video', () => client.addVideoTitle());
+        test('should select method ', () => client.selectSearchVideoMethode());
         test('should search video ', () => client.searchVideo());
         test('should click on  save', () => client.clickSaveButton());
         test('Should click on visualiser', () => client.clickPreviewButton());
