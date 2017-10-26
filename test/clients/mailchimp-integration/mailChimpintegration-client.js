@@ -1,5 +1,5 @@
-const {getClient} = require('../common.webdriverio');
-const {selector} = require('../globals.webdriverio.js');
+const {getClient} = require('../../common.webdriverio');
+const {selector} = require('../../globals.webdriverio.js');
 
 
 class mailChimpintegration {
