@@ -57,7 +57,6 @@ class mailChimpIntegration {
     }
 
     goToStoreAdress() {
-
         return this.client
             .pause(2000)
             .waitForExist(selector.BO.SettingPage.setting_subtab, 90000)
@@ -110,7 +109,6 @@ class mailChimpIntegration {
     }
 
     addNewList() {
-
         return this.client
             .waitForExist(selector.BO.MailChimpModulePage.list_input, 90000)
             .setValue(selector.BO.MailChimpModulePage.list_input, global.listNameInput)
@@ -130,7 +128,6 @@ class mailChimpIntegration {
     }
 
     selectList() {
-
         return this.client
             .waitForExist(selector.BO.MailChimpModulePage.list_select, 90000)
             .selectByVisibleText(selector.BO.MailChimpModulePage.list_select, global.listNameInput).getText('option:checked').then(function (selectValue) {
