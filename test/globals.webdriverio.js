@@ -160,7 +160,7 @@ module.exports = {
                 }
             },
             SettingPage: {
-                setting_subtab: '//*[@id="subtab-ShopParameters"]/a/span',//
+                setting_subtab: '#subtab-ShopParameters',
             },
             MailChimpModulePage: {
                 login_input: '//*[@id="username"]',

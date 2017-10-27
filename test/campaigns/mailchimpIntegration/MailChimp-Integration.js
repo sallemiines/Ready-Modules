@@ -9,17 +9,18 @@ scenario('Test mailChimp-integration', client => {
             test('should configure the store adress', () => client.configureStoreAdress());
             test('should save the store adress', () => client.clickOnSaveStoreButton());
         }, "mailchimp-integration/mailChimpintegration-client");
-        scenario('Go to the module page', client => {
+    }, "mailchimp-integration/mailChimpintegration-client");
+    scenario('Test case 2 : Configure the "MailChimIntegration" module', client => {
             test('should go to the installed module page', () => client.goToModulePage());
             test('should search the "MailChimpIntegration" module page', () => client.searchModule());
-        }, "mailchimp-integration/mailChimpintegration-client");
-    }, "mailchimp-integration/mailChimpintegration-client");
-    scenario('Test case 2 : Configure the "MailChimIntegration" module', () => {
-            test('should go to the module configuration page', () => client.goModuleConfigurationPage());
+            test('should go to the module configuration page', () => client.goToModuleConfigurationPage());
             test('should access to mailchimp', () => client.clickAccessToMailchimpAccountButton());
             test('should log in successfully in mailchimp account ', () => client.signInMailchimp());
             test('should add a new list ', () => client.addNewList());
             test('should disconnect from list', () => client.disconnectFromList());
             test('should select list', () => client.selectList());
-        }, "mailchimp-integration/mailChimpintegration-client");
+    }, "mailchimp-integration/mailChimpintegration-client");
+        scenario('Logout from Back Office', client => {
+            test('should logout', () => client.signOutBO());
+    }, "mailchimp-integration/mailChimpintegration-client");
 }, "mailchimp-integration/mailChimpintegration-client", true);

@@ -2,13 +2,16 @@ const {getClient} = require('../../common.webdriverio.js');
 const {selector} = require('../../globals.webdriverio.js');
 
 
-class mailChimpIntegration {
+class MailChimpIntegration {
     constructor() {
         this.client = getClient();
     }
 
     signInBO() {
         return this.client.signinBO();
+    }
+    signOutBO() {
+        return this.client.signoutBO();
     }
 
     close() {
@@ -45,7 +48,7 @@ class mailChimpIntegration {
             .pause(3000);
     }
 
-    goModuleConfigurationPage() {
+    goToModuleConfigurationPage() {
         if (global.nbr === 0) {
             done(new Error('The module you are searching for does not exist!'));
         }
@@ -139,4 +142,4 @@ class mailChimpIntegration {
 
 }
 
-module.exports = mailChimpIntegration;
+module.exports = MailChimpIntegration;
