@@ -12,7 +12,7 @@ global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 
 global.module_tech_name_mailchimp = 'mailchimpintegration';
-global.listNameInput = 'Test_list' + date_time;
+global.listNameInput = 'Test_list_MailChimp' + date_time;
 module.exports = {
     selector: {
 
