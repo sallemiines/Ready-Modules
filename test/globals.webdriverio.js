@@ -11,6 +11,8 @@ global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
 
+global.module_tech_name_mailchimp = 'mailchimpintegration';
+global.listNameInput = 'Test_list' + date_time;
 module.exports = {
     selector: {
 
@@ -343,7 +345,7 @@ module.exports = {
             //Cart summary selectors
             CartSummary: {
                 command_button_checkout: '//*[@id="main"]/div/div[2]/div[1]/div[3]/div/a',
-                checkout_step2_continue_button:'//*[@id="checkout-addresses-step"]/div/div/form/div[2]/button',
+                checkout_step2_continue_button: '//*[@id="checkout-addresses-step"]/div/div/form/div[2]/button',
                 step3_section: '//*[@id="checkout-delivery-step"]',
                 checkout_step4_payment: '//*[@id="payment-option-2"]',
                 checkout_step4_cgv: '//input[@id="conditions_to_approve[terms-and-conditions]"]',

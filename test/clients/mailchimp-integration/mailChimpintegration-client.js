@@ -1,26 +1,19 @@
-const {getClient} = require('../../common.webdriverio');
+const {getClient} = require('../../common.webdriverio.js');
 const {selector} = require('../../globals.webdriverio.js');
 
 
-class mailChimpintegration {
+class mailChimpIntegration {
     constructor() {
         this.client = getClient();
     }
 
-    signInBO(login = 'testpresta@presto.com', password = 'abcd1234') {
-        return this.client
-            .url(`https://${URL}/backoffice/`)
-            .waitForExist(selector.BO.AccessPage.login_input, 60000)
-            .waitForExist(selector.BO.AccessPage.password_input, 60000)
-            .setValue(selector.BO.AccessPage.login_input, login)
-            .setValue(selector.BO.AccessPage.password_input, password)
-            .click(selector.BO.AccessPage.login_button)
-            .pause(5000);
+    signInBO() {
+        return this.client.signinBO();
     }
 
     close() {
         return this.client.end();
-    };
+    }
 
     takeScreenshot() {
         return this.client.saveScreenshot(`test/screenshots/${this.client.desiredCapabilities.browserName}_exception_${global.date_time}.png`);
@@ -44,8 +37,10 @@ class mailChimpintegration {
             .waitForExist(selector.BO.ModulesPage.search_button, 3000)
             .click(selector.BO.ModulesPage.search_button)
             .pause(3000)
-            .getText(selector.BO.ModulesPage.page_loaded).then(function (nbr) {
-                global.nbr = parseInt(nbr[0].charAt(0));
+            .waitForExist(selector.BO.ModulesPage.page_loaded, 90000)
+            .then(() => this.client.getText(selector.BO.ModulesPage.page_loaded))
+            .then((nbr) => {
+                global.nbr = parseInt(nbr[0].charAt(0))
             })
             .pause(3000);
     }
@@ -61,11 +56,11 @@ class mailChimpintegration {
         }
     }
 
-    goToStoreAdresse() {
+    goToStoreAdress() {
 
         return this.client
             .pause(2000)
-            .waitForExist(selector.BO.SettingPage.setting_subtab,90000)
+            .waitForExist(selector.BO.SettingPage.setting_subtab, 90000)
             .moveToObject(selector.BO.SettingPage.setting_subtab)
             .pause(5000)
             .waitForExist(selector.BO.ContactPage.contact_subtab, 90000)
@@ -74,23 +69,23 @@ class mailChimpintegration {
             .waitForExist(selector.BO.ContactPage.shop_link, 90000)
             .click(selector.BO.ContactPage.shop_link)
     }
-    configStoreAdresse ()
-    {
+
+    configureStoreAdress() {
         return this.client
-        .waitForExist(selector.BO.ContactPage.adress_shop_input, 90000)
-        .setValue(selector.BO.ContactPage.adress_shop_input, 'rue de boulvard')
-        .waitForExist(selector.BO.ContactPage.postal_code_input, 90000)
-        .setValue(selector.BO.ContactPage.postal_code_input, '75001')
-        .waitForExist(selector.BO.ContactPage.city_shop_input, 90000)
-        .setValue(selector.BO.ContactPage.city_shop_input, 'Paris')
-        .waitForExist(selector.BO.ContactPage.city_shop_input, 90000)
-        .setValue(selector.BO.ContactPage.city_shop_input, '12345678')
-        .waitForExist(selector.BO.ContactPage.fax_input, 90000)
-        .setValue(selector.BO.ContactPage.fax_input, '12345678')
+            .waitForExist(selector.BO.ContactPage.adress_shop_input, 90000)
+            .setValue(selector.BO.ContactPage.adress_shop_input, 'rue de boulvard')
+            .waitForExist(selector.BO.ContactPage.postal_code_input, 90000)
+            .setValue(selector.BO.ContactPage.postal_code_input, '75001')
+            .waitForExist(selector.BO.ContactPage.city_shop_input, 90000)
+            .setValue(selector.BO.ContactPage.city_shop_input, 'Paris')
+            .waitForExist(selector.BO.ContactPage.city_shop_input, 90000)
+            .setValue(selector.BO.ContactPage.city_shop_input, '12345678')
+            .waitForExist(selector.BO.ContactPage.fax_input, 90000)
+            .setValue(selector.BO.ContactPage.fax_input, '12345678')
 
     }
-    clickSaveStoreButton ()
-    {
+
+    clickOnSaveStoreButton() {
         return this.client
             .pause(3000)
             .waitForExist(selector.BO.ContactPage.save_button, 9000)
@@ -104,21 +99,19 @@ class mailChimpintegration {
             .click(selector.BO.MailChimpModulePage.access_button)
     }
 
-    signMailchimp ()
-
-    {
+    signInMailchimp() {
         return this.client
-        .waitForExist(selector.BO.MailChimpModulePage.login_input, 90000)
-        .setValue(selector.BO.MailChimpModulePage.login_input, 'prestotests')
-        .waitForExist(selector.BO.MailChimpModulePage.password_input, 90000)
-        .setValue(selector.BO.MailChimpModulePage.password_input, 'Presto_tests1')
-        .waitForExist(selector.BO.MailChimpModulePage.login_button, 90000)
-        .click(selector.BO.MailChimpModulePage.login_button)}
+            .waitForExist(selector.BO.MailChimpModulePage.login_input, 90000)
+            .setValue(selector.BO.MailChimpModulePage.login_input, 'prestotests')
+            .waitForExist(selector.BO.MailChimpModulePage.password_input, 90000)
+            .setValue(selector.BO.MailChimpModulePage.password_input, 'Presto_tests1')
+            .waitForExist(selector.BO.MailChimpModulePage.login_button, 90000)
+            .click(selector.BO.MailChimpModulePage.login_button)
+    }
 
     addNewList() {
 
         return this.client
-
             .waitForExist(selector.BO.MailChimpModulePage.list_input, 90000)
             .setValue(selector.BO.MailChimpModulePage.list_input, global.listNameInput)
             .click(selector.BO.MailChimpModulePage.save_button)
@@ -128,15 +121,15 @@ class mailChimpintegration {
             })
     }
 
-    disconnectFromLIst()
-    {
+    disconnectFromList() {
         return this.client
             .pause(3000)
             .waitForExist(selector.BO.MailChimpModulePage.save_button, 90000)
             .click(selector.BO.MailChimpModulePage.save_button)
             .pause(5000)
     }
-    selectList () {
+
+    selectList() {
 
         return this.client
             .waitForExist(selector.BO.MailChimpModulePage.list_select, 90000)
@@ -149,4 +142,4 @@ class mailChimpintegration {
 
 }
 
-module.exports = mailChimpintegration;
+module.exports = mailChimpIntegration;
