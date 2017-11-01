@@ -61,11 +61,11 @@ class GoogleAnalytics {
             .pause(9000)
     }
 
-    goToCreateAccountLink() {
+    clickOnCreateAccountLink() {
 
         return this.client
-            .moveToObject(selector.BO.GoogleAnalyticsPage.creat_account_link, 9000)
-            .then(() => this.client.getAttribute(selector.BO.GoogleAnalyticsPage.creat_account_link, 'href'))
+            .moveToObject(selector.BO.GoogleAnalyticsPage.create_account_link, 9000)
+            .then(() => this.client.getAttribute(selector.BO.GoogleAnalyticsPage.create_account_link, 'href'))
             .then((href) => {
                 this.client.newWindow(href)
             })
@@ -115,11 +115,11 @@ class GoogleAnalytics {
             .pause(9000)
     }
 
-    searchModule() {
+    searchModule(moduleName) {
 
         return this.client
             .waitForExist(selector.BO.ModulesPage.search_input, 90000)
-            .setValue(selector.BO.ModulesPage.search_input, module_tech_name_googleAnalytics)
+            .setValue(selector.BO.ModulesPage.search_input, moduleName)
             .waitForExist(selector.BO.ModulesPage.search_button, 3000)
             .click(selector.BO.ModulesPage.search_button)
             .pause(3000)
@@ -156,8 +156,9 @@ class GoogleAnalytics {
 
         return this.client
             .waitForExist(selector.BO.GoogleAnalyticsPage.account_id_green_block, 90000)
-            .getText(selector.BO.GoogleAnalyticsPage.account_id_green_block).then(function (text) {
-                should(text).be.equal('×\nAccount ID updated successfully');
+            .then(() => this.client.getText(selector.BO.GoogleAnalyticsPage.account_id_green_block))
+            .then((value) => {
+                expect(value).to.eql('×\nAccount ID updated successfully')
             })
     }
 
@@ -165,10 +166,12 @@ class GoogleAnalytics {
 
         return this.client
             .waitForExist(selector.BO.GoogleAnalyticsPage.user_id_green_block, 90000)
-            .getText(selector.BO.GoogleAnalyticsPage.user_id_green_block).then(function (text) {
-                should(text).be.equal('×\nSettings for User ID updated successfully');
+            .then(() => this.client.getText(selector.BO.GoogleAnalyticsPage.user_id_green_block))
+            .then((value) => {
+                expect(value).to.eql('×\nSettings for User ID updated successfully')
             })
     }
+
 }
 
 module.exports = GoogleAnalytics;

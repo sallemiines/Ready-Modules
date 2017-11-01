@@ -10,7 +10,6 @@ global.selenium_url = argv.SELENIUM;
 global._projectdir = path.join(__dirname, '..', '..');
 global.product_id = new Date().getTime();
 global.new_customer_email = 'pub' + date_time + '@prestashop.com';
-global.module_tech_name_googleAnalytics = 'ps_googleanalytics';
 global.module_tech_name_mailchimp = 'mailchimpintegration';
 global.listNameInput = 'Test_list_MailChimp' + date_time;
 module.exports = {
@@ -192,7 +191,7 @@ module.exports = {
                 googleanalytics_submit_btn: '//*[@id="configuration_form_submit_btn"]',
                 account_id_green_block: '//*[@id="content"]/div[6]/div[@class="module_confirmation conf confirm alert alert-success"]',
                 user_id_green_block: '//*[@id="content"]/div[7]/div[@class="module_confirmation conf confirm alert alert-success"]',
-                creat_account_link: '//*[@id="google_analytics_content"]/div/div[2]/p[2]/b/a'
+                create_account_link: '//*[@id="google_analytics_content"]/div/div[2]/p[2]/b/a'
             }
         },
         //FO
