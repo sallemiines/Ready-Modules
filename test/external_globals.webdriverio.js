@@ -217,15 +217,15 @@ module.exports = {
                 save_button: '//*[@id="app_save_btn"]'
             },
             GoogleAnalytics: {
-                connect_button:'/html/body/header/nav/div/a',
-                google_analytics_choice:'/html/body/header/nav/div/div/ul/li[1]/a',
-                property_settings_button:'//*[@id="ID-m-propertyColumn"]/div[2]/div[3]/div[1]/a[1]/div',
-                administration_button:'//*[@id="bottomSectionAdmin"]/nav/div/div/ga-nav-link/div/a/ng-include/span',
+                connect_button: '/html/body/header/nav/div/a',
+                google_analytics_choice: '/html/body/header/nav/div/div/ul/li[1]/a',
+                property_settings_button: '//*[@id="ID-m-propertyColumn"]/div[2]/div[3]/div[1]/a[1]/div',
+                administration_button: '//*[@id="bottomSectionAdmin"]/nav/div/div/ga-nav-link/div/a/ng-include/span',
                 google_analytics_id: '//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/section[1]/div[1]/div[2]',
-                google_analytics_url_input:'//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/section[1]/div[3]/div[2]/ga-url-selector/input',
+                google_analytics_url_input: '//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/section[1]/div[3]/div[2]/ga-url-selector/input',
                 save_button: '//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/ga-submit-buttons/div/button[1]',
-                google_analytics_link:'/html/body/div[2]/div[2]/section/div/article/section/div/ol/li[1]/ul/li[1]/a',
-                reset_button:'//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/ga-submit-buttons/div/button[2]'
+                google_analytics_link: '/html/body/div[2]/div[2]/section/div/article/section/div/ol/li[1]/ul/li[1]/a',
+                reset_button: '//*[@id="ID-m-content"]/div/div/div/div/div/div[2]/div/ui-view/form/ga-submit-buttons/div/button[2]'
             }
         }
 

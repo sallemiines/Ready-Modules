@@ -40,7 +40,6 @@ class GoogleAnalytics {
         return this.client
             .waitForExist(selector.BO.GoogleAnalyticsPage.config_module_button, 90000)
             .click(selector.BO.GoogleAnalyticsPage.config_module_button)
-
     }
 
     fillGoogleSignInForm(login = "prestotests@gmail.com", password = "presto_tests") {
@@ -83,7 +82,7 @@ class GoogleAnalytics {
             .waitForExist(external.FO.GoogleAnalytics.reset_button, 90000)
             .then(() => this.client.getTabIds())
             .then((ids) => this.client.switchTab(ids[0]))
-            .pause(20000);
+            .pause(5000);
     }
 
     clickOnAdministration() {
@@ -91,7 +90,6 @@ class GoogleAnalytics {
         return this.client
             .waitForExist(external.FO.GoogleAnalytics.administration_button, 90000)
             .click(external.FO.GoogleAnalytics.administration_button)
-            .pause(3000)
     }
 
     selectPropertySettings() {
@@ -171,7 +169,6 @@ class GoogleAnalytics {
                 should(text).be.equal('×\nSettings for User ID updated successfully');
             })
     }
-
 }
 
 module.exports = GoogleAnalytics;
